@@ -500,28 +500,6 @@
   transform-origin: center center;
 }
 
-/* Wave 0: Full-Screen Ambient Wave Bloom Layer (Expansive atmospheric burst on button click) */
-.cu-wave-fullscreen-bloom {
-  inset: -320px;
-  background: radial-gradient(
-    circle,
-    rgba(99, 102, 241, 0.48) 0%,
-    rgba(34, 197, 94, 0.4) 30%,
-    rgba(185, 28, 28, 0.32) 58%,
-    transparent 78%
-  );
-  filter: blur(70px);
-  opacity: 0;
-  z-index: 0;
-  transform-origin: center center;
-  transform: scale(0.6);
-  pointer-events: none;
-}
-
-.uffizio-ai-window.wave-intro .cu-wave-fullscreen-bloom {
-  animation: cu-wave-bloom-contract 1.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
 /* Wave 1: Sub-Bass Soundstage Aura (Deep cosmic dark mode wave, merges 100% into background) */
 .cu-wave-subbass {
   inset: -28px;
@@ -537,12 +515,6 @@
   opacity: 0.55;
   animation: cu-wave-subbass-breathe 8.5s ease-in-out infinite alternate;
   z-index: 1;
-}
-
-/* On Button Click: Wave starts FULL SCREEN (~1,250px) and smoothly settles to current actual size */
-.uffizio-ai-window.wave-intro .cu-wave-subbass {
-  animation: cu-wave-subbass-intro 1.45s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             cu-wave-subbass-breathe 8.5s ease-in-out 1.45s infinite alternate;
 }
 
 /* Wave 2: Harmonic Audio Frequency Ripple (Deep saturated chromatic glow) */
@@ -561,11 +533,6 @@
   z-index: 2;
 }
 
-.uffizio-ai-window.wave-intro .cu-wave-harmonic {
-  animation: cu-wave-harmonic-intro 1.45s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             cu-wave-harmonic-pulse 5.5s ease-in-out 1.45s infinite alternate;
-}
-
 /* Wave 3: Core Frequency Beat (Smooth rhythmic dark pulse hugging the star) */
 .cu-wave-beat {
   inset: -6px;
@@ -581,11 +548,6 @@
   opacity: 0.7;
   animation: cu-wave-beat-pulse 3.8s ease-in-out infinite alternate;
   z-index: 3;
-}
-
-.uffizio-ai-window.wave-intro .cu-wave-beat {
-  animation: cu-wave-beat-intro 1.45s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             cu-wave-beat-pulse 3.8s ease-in-out 1.45s infinite alternate;
 }
 
 /* 2. The White Origami Star Icon - Rotates in a circle at its own place */
@@ -655,102 +617,6 @@
 }
 
 /* KEYFRAMES FOR MUSIC WAVE & CIRCULAR IN-PLACE ROTATION */
-
-/* Full-Screen Bloom Contraction */
-@keyframes cu-wave-bloom-contract {
-  0% {
-    transform: scale(2.8);
-    opacity: 0.95;
-    filter: blur(85px);
-  }
-  35% {
-    transform: scale(1.7);
-    opacity: 0.75;
-    filter: blur(60px);
-  }
-  75% {
-    transform: scale(1.05);
-    opacity: 0.35;
-    filter: blur(40px);
-  }
-  100% {
-    transform: scale(0.65);
-    opacity: 0;
-    filter: blur(25px);
-  }
-}
-
-/* Wave 1 Intro: Starts FULL SCREEN (~1,250px) and smoothly settles to Actual Size (Scale 1) */
-@keyframes cu-wave-subbass-intro {
-  0% {
-    transform: scale(9.5) rotate(-45deg);
-    opacity: 0.95;
-    filter: blur(68px);
-  }
-  40% {
-    transform: scale(4.5) rotate(0deg);
-    opacity: 0.85;
-    filter: blur(50px);
-  }
-  75% {
-    transform: scale(1.5) rotate(90deg);
-    opacity: 0.68;
-    filter: blur(38px);
-  }
-  100% {
-    transform: scale(1) rotate(180deg);
-    opacity: 0.55;
-    filter: blur(32px);
-  }
-}
-
-/* Wave 2 Intro: Harmonic ripple zooms in from Full Screen (Scale 7.5) to Actual Size (Scale 1) */
-@keyframes cu-wave-harmonic-intro {
-  0% {
-    transform: scale(7.5);
-    opacity: 0.95;
-    filter: blur(55px);
-  }
-  45% {
-    transform: scale(3.6);
-    opacity: 0.85;
-    filter: blur(38px);
-  }
-  80% {
-    transform: scale(1.4);
-    opacity: 0.72;
-    filter: blur(26px);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.65;
-    filter: blur(20px);
-  }
-}
-
-/* Wave 3 Intro: Core frequency pulse contracts from Full Screen (Scale 6.2) to Actual Size (Scale 1) */
-@keyframes cu-wave-beat-intro {
-  0% {
-    transform: scale(6.2) rotate(180deg);
-    opacity: 0.98;
-    filter: blur(40px);
-  }
-  45% {
-    transform: scale(3.0) rotate(60deg);
-    opacity: 0.88;
-    filter: blur(26px);
-  }
-  80% {
-    transform: scale(1.3) rotate(-60deg);
-    opacity: 0.76;
-    filter: blur(16px);
-  }
-  100% {
-    transform: scale(1) rotate(-180deg);
-    opacity: 0.7;
-    filter: blur(12px);
-  }
-}
 
 /* Smooth 360° circular rotation of icon at its own place */
 @keyframes cu-star-rotate-in-place {
