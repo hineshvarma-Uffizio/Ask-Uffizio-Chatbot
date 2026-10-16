@@ -1,0 +1,1478 @@
+/**
+ * Uffizio AI Chat Widget Stylesheet - ClickUp Brain² Exact Match
+ * Pixel-perfect adaptation of ClickUp Brain's dark obsidian aesthetic,
+ * glowing multi-color gradient floral icon, action pills, top New Chat bar,
+ * and integrated input dock — customized for Uffizio Telematics & IoT.
+ */
+
+:root {
+  --cu-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cu-bg-main: #0e0e11;
+  --cu-bg-panel: #141418;
+  --cu-bg-card: #1c1c22;
+  --cu-bg-input: #191920;
+  --cu-bg-hover: #26262e;
+  --cu-border-subtle: rgba(255, 255, 255, 0.08);
+  --cu-border-light: rgba(255, 255, 255, 0.14);
+  --cu-border-glow: rgba(147, 51, 234, 0.45);
+  
+  --cu-text-main: #ffffff;
+  --cu-text-muted: #8e8e98;
+  --cu-text-dim: #5c5c66;
+  
+  --cu-purple-badge-bg: #261b3d;
+  --cu-purple-badge-text: #a892fe;
+  --cu-accent-cyan: #00bedd;
+  --cu-accent-blue: #0077ff;
+  --cu-accent-magenta: #ec4899;
+  
+  --cu-radius-lg: 20px;
+  --cu-radius-md: 12px;
+  --cu-radius-sm: 8px;
+  --cu-radius-full: 9999px;
+  
+  --cu-shadow-panel: 0 25px 80px rgba(0, 0, 0, 0.85), 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* =======================================================
+   1. HEADER TRIGGER BUTTON (ClickUp Sparkle Pill on Uffizio Site)
+======================================================= */
+.uffizio-header-ai-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.18) 0%, rgba(0, 119, 255, 0.22) 50%, rgba(0, 190, 221, 0.18) 100%);
+  border: 1px solid rgba(168, 146, 254, 0.45);
+  border-radius: var(--cu-radius-full);
+  color: #ffffff !important;
+  font-family: var(--cu-font);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  box-shadow: 0 4px 18px rgba(147, 51, 234, 0.25);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.uffizio-header-ai-btn:hover {
+  transform: translateY(-2px);
+  border-color: #a892fe;
+  box-shadow: 0 6px 26px rgba(168, 146, 254, 0.45), 0 0 20px rgba(0, 190, 221, 0.3);
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(0, 119, 255, 0.35) 50%, rgba(0, 190, 221, 0.3) 100%);
+}
+
+.uffizio-header-ai-btn .brain-sparkle-flower {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.uffizio-header-ai-btn .brain-sparkle-flower .cu-uffisanse-svg {
+  width: 17px;
+  height: 17px;
+  animation: cu-mini-logo-float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(164, 107, 255, 0.75));
+}
+
+@keyframes cu-mini-logo-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 6px rgba(110, 72, 228, 0.75));
+  }
+  50% {
+    transform: translateY(-1.5px) scale(1.1);
+    filter: drop-shadow(0 0 9px rgba(76, 181, 58, 0.85)) drop-shadow(0 0 12px rgba(202, 47, 60, 0.75));
+  }
+}
+
+.uffizio-header-ai-btn .ai-badge {
+  display: none !important;
+}
+
+/* =======================================================
+   2. FLOATING LAUNCHER (Bottom-Right Circle with Multicolor Glow)
+======================================================= */
+.uffizio-ai-launcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #141418;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 25px rgba(110, 72, 228, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99998;
+  border: 1.5px solid rgba(164, 107, 255, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.uffizio-ai-launcher:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(164, 107, 255, 0.8);
+  border-color: rgba(212, 180, 255, 0.8);
+}
+
+.uffizio-ai-launcher .cu-launcher-logo-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ca2f3c, #4cb53a, #6e48e4, #d4b4ff, #a46bff, #ca2f3c);
+  filter: blur(12px);
+  opacity: 0.6;
+  animation: cu-wave-subbass-breathe 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.uffizio-ai-launcher .cu-uffisanse-svg {
+  position: relative;
+  z-index: 2;
+  transform-origin: center center;
+  animation: cu-star-rotate-in-place 12s linear infinite;
+}
+
+/* =======================================================
+   3. CLICKUP BRAIN SIDEBAR / TRAY WINDOW
+======================================================= */
+/* Remove dark blocking modal overlay so main website remains 100% visible and readable */
+.uffizio-ai-modal-overlay {
+  display: none !important;
+}
+
+/* Side-panel / Full Height Sidebar Sliding smoothly from the Right Side */
+.uffizio-ai-window {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 500px;
+  max-width: 100vw;
+  background: var(--cu-bg-main);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 20px 0 0 20px;
+  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  z-index: 100000;
+  overflow: hidden;
+  font-family: var(--cu-font);
+  transform: translateX(105%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.42s ease;
+}
+
+.uffizio-ai-window.open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* Responsive Page Behavior: Main website content shrinks, reflows, and stays 100% visible */
+@media (min-width: 900px) {
+  body {
+    transition: padding-right 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  body.uffizio-ai-sidebar-open {
+    padding-right: 500px !important;
+  }
+  body.uffizio-ai-sidebar-open .uffizio-ai-launcher {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.85);
+  }
+}
+
+.uffizio-ai-window.docked-full {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 780px;
+  border-radius: 0;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+}
+
+.uffizio-ai-window.minimized {
+  height: 60px !important;
+  top: auto;
+  bottom: 14px;
+  border-radius: var(--cu-radius-md);
+}
+
+.uffizio-ai-window.minimized .cu-chat-scrollable,
+.uffizio-ai-window.minimized .cu-chat-input-container {
+  display: none !important;
+}
+
+/* =======================================================
+   4. CLICKUP TOP BAR: "New Chat ⌵" & Action Icons
+======================================================= */
+.cu-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px 10px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.cu-newchat-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.cu-newchat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1b1b22;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d2d2dc;
+  padding: 6px 14px;
+  border-radius: var(--cu-radius-sm);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cu-newchat-pill:hover,
+.cu-newchat-pill.open {
+  background: #24242d;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.cu-newchat-pill svg {
+  width: 13px;
+  height: 13px;
+  color: var(--cu-text-muted);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cu-newchat-pill.open svg {
+  transform: rotate(180deg);
+  color: #ffffff;
+}
+
+/* ClickUp Style Dropdown Menu */
+.cu-newchat-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 215px;
+  background: #121317;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.97);
+  transform-origin: top left;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.18s ease;
+  pointer-events: none;
+}
+
+.cu-newchat-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.cu-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 9px;
+  color: #d8d8e2;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 450;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.cu-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+.cu-dropdown-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cu-dropdown-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.cu-icon-reset {
+  color: #00c7e6;
+}
+
+.cu-icon-share {
+  color: #60a5fa;
+}
+
+.cu-icon-download {
+  color: #b78dfa;
+}
+
+.cu-dropdown-text {
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.cu-dropdown-subtext {
+  font-size: 12px;
+  color: #8c8c9e;
+  font-weight: 400;
+}
+
+/* Action Toast Notification */
+.cu-toast-notification {
+  position: absolute;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: #1b1c24;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  padding: 9px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s ease;
+}
+
+.cu-toast-notification.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.cu-toast-notification .cu-toast-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.cu-toast-notification .cu-toast-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.cu-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cu-top-btn {
+  background: transparent;
+  border: none;
+  color: var(--cu-text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cu-top-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+/* =======================================================
+   5. SCROLLABLE BODY (Center Hero + Messages)
+======================================================= */
+.cu-chat-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+.cu-chat-scrollable::-webkit-scrollbar {
+  width: 5px;
+}
+.cu-chat-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cu-chat-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+.cu-chat-scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* =======================================================
+   7. CENTER HERO: UffiSanse + Single Line Floating Products
+======================================================= */
+.cu-hero-center {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 0 22px;
+  animation: cu-fade 0.3s ease;
+  width: 100%;
+}
+
+@keyframes cu-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =======================================================
+   7. CENTER HERO: UffiSanse Logo with demo.mp4 Cinematic Rim Light & Nebula Aura
+======================================================= */
+.cu-flower-icon-wrap {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  user-select: none;
+  isolation: isolate;
+}
+
+/* 1. Base Concentric Music Wave Layers (Smooth rhythmic audio frequency waves) */
+.cu-music-wave {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+/* Wave 1: Sub-Bass Soundstage Aura (Deep cosmic dark mode wave, merges 100% into background) */
+.cu-wave-subbass {
+  inset: -28px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(185, 28, 28, 0.38) 0deg,
+    rgba(34, 197, 94, 0.4) 75deg,
+    rgba(99, 102, 241, 0.48) 150deg,
+    rgba(168, 85, 247, 0.42) 230deg,
+    rgba(185, 28, 28, 0.38) 360deg
+  );
+  filter: blur(32px);
+  opacity: 0.55;
+  animation: cu-wave-subbass-breathe 8.5s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* Wave 2: Harmonic Audio Frequency Ripple (Deep saturated chromatic glow) */
+.cu-wave-harmonic {
+  inset: -14px;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.55) 0%,
+    rgba(34, 197, 94, 0.38) 45%,
+    rgba(185, 28, 28, 0.28) 75%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  opacity: 0.65;
+  animation: cu-wave-harmonic-pulse 5.5s ease-in-out infinite alternate;
+  z-index: 2;
+}
+
+/* Wave 3: Core Frequency Beat (Smooth rhythmic dark pulse hugging the star) */
+.cu-wave-beat {
+  inset: -6px;
+  background: conic-gradient(
+    from 180deg,
+    rgba(34, 197, 94, 0.55) 0deg,
+    rgba(99, 102, 241, 0.6) 90deg,
+    rgba(168, 85, 247, 0.55) 180deg,
+    rgba(225, 29, 72, 0.5) 270deg,
+    rgba(34, 197, 94, 0.55) 360deg
+  );
+  filter: blur(12px);
+  opacity: 0.7;
+  animation: cu-wave-beat-pulse 3.8s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+/* 2. The White Origami Star Icon - Rotates in a circle at its own place */
+.cu-uffisanse-svg {
+  position: relative;
+  z-index: 4;
+  display: block;
+  overflow: visible;
+  transform-origin: center center;
+  will-change: transform;
+  animation: cu-star-rotate-in-place 12s linear infinite;
+}
+
+/* Pure Crisp White Star (Zero milky fog, clean high-contrast silhouette) */
+.cu-uffisanse-svg.cu-svg-white .cu-star-body-white {
+  fill: #ffffff;
+  fill-opacity: 1;
+}
+
+.cu-uffisanse-svg.cu-svg-white {
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 10px rgba(99, 102, 241, 0.35));
+}
+
+/* Glassy base contour stroke */
+.cu-star-rim-base {
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 0.3px;
+}
+
+/* Soothing slow neon stroke sweep along star contour (Dark mode tempo) */
+.cu-star-rim-trace {
+  stroke-dasharray: 18 39;
+  stroke-dashoffset: 57;
+  animation: cu-rim-stroke-loop 7.5s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.7)) drop-shadow(0 0 6px rgba(99, 102, 241, 0.6));
+}
+
+/* Keep bright white spark hidden on hero to prevent milky halo */
+.cu-flower-icon-wrap .cu-star-rim-spark {
+  display: none !important;
+}
+
+/* Header Button: White color outline circling around the star */
+.brain-sparkle-flower .cu-star-rim-spark {
+  display: block !important;
+  stroke: #ffffff !important;
+  stroke-width: 0.85px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 8 49;
+  stroke-dashoffset: 57;
+  animation: cu-rim-stroke-loop 3.5s linear infinite;
+  filter: drop-shadow(0 0 2.5px #ffffff) drop-shadow(0 0 5px rgba(255, 255, 255, 0.95));
+}
+
+.brain-sparkle-flower .cu-star-rim-base {
+  stroke: rgba(255, 255, 255, 0.4) !important;
+  stroke-width: 0.35px;
+}
+
+/* Header & Mini instances stroke animation */
+.brain-sparkle-flower .cu-star-rim-trace,
+.uffizio-ai-launcher .cu-star-rim-trace {
+  stroke-dasharray: 18 39;
+  stroke-dashoffset: 57;
+  animation: cu-rim-stroke-loop 3.5s linear infinite;
+}
+
+/* KEYFRAMES FOR MUSIC WAVE & CIRCULAR IN-PLACE ROTATION */
+
+/* Smooth 360° circular rotation of icon at its own place */
+@keyframes cu-star-rotate-in-place {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Wave 1 Keyframe: Sub-bass slow expansion */
+@keyframes cu-wave-subbass-breathe {
+  0% {
+    transform: scale(0.92) rotate(0deg);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.18) rotate(180deg);
+    opacity: 0.72;
+  }
+  100% {
+    transform: scale(0.92) rotate(360deg);
+    opacity: 0.45;
+  }
+}
+
+/* Wave 2 Keyframe: Harmonic frequency ripple */
+@keyframes cu-wave-harmonic-pulse {
+  0% {
+    transform: scale(0.88);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.24);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(0.88);
+    opacity: 0.5;
+  }
+}
+
+/* Wave 3 Keyframe: Rhythmic core frequency beat */
+@keyframes cu-wave-beat-pulse {
+  0% {
+    transform: scale(0.94) rotate(0deg);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.14) rotate(-180deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(0.94) rotate(-360deg);
+    opacity: 0.65;
+  }
+}
+
+/* Perimeter rim stroke loop */
+@keyframes cu-rim-stroke-loop {
+  0% { stroke-dashoffset: 57; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes cu-aura-pulse {
+  0% { transform: scale(0.88); opacity: 0.55; }
+  100% { transform: scale(1.22); opacity: 0.95; }
+}
+
+.cu-hero-title {
+  display: none !important;
+}
+
+/* Center Prompt Block under UffiSanse */
+.cu-hero-prompt-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 18px;
+  padding: 0 16px;
+}
+
+.cu-hero-question {
+  font-size: 21px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.cu-hero-subtext {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #9090a0;
+  max-width: 440px;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Single Line Auto-Scrolling Floating Products Section (Rock-Solid in Place, Zero Layout Shift) */
+.cu-products-auto-scroll-section {
+  width: 100%;
+  margin: 4px 0 18px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+/* Elegant Soft Edge Fade Curtains (Smooth theater curtain expansion on hover - NEVER moves or shifts pills) */
+.cu-products-auto-scroll-section::before,
+.cu-products-auto-scroll-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  pointer-events: none;
+  transition: width 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Left curtain: softly conceals outer pills, smoothly revealing center ~290px */
+.cu-products-auto-scroll-section::before {
+  left: 0;
+  width: clamp(35px, calc(50% - 145px), 95px);
+  background: linear-gradient(
+    to right,
+    var(--cu-bg-main) 0%,
+    var(--cu-bg-main) 35%,
+    rgba(14, 14, 17, 0.85) 65%,
+    transparent 100%
+  );
+}
+
+/* Right curtain: softly conceals outer pills, smoothly revealing center ~290px */
+.cu-products-auto-scroll-section::after {
+  right: 0;
+  width: clamp(35px, calc(50% - 145px), 95px);
+  background: linear-gradient(
+    to left,
+    var(--cu-bg-main) 0%,
+    var(--cu-bg-main) 35%,
+    rgba(14, 14, 17, 0.85) 65%,
+    transparent 100%
+  );
+}
+
+/* On hover / focus: curtains smoothly slide outward to 35px at edges to reveal full width without moving any logos */
+.cu-products-auto-scroll-section:hover::before,
+.cu-products-auto-scroll-section:hover::after,
+.cu-products-auto-scroll-section:focus-within::before,
+.cu-products-auto-scroll-section:focus-within::after {
+  width: 35px;
+}
+
+.cu-marquee-row {
+  display: flex;
+  gap: 10px;
+  user-select: none;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.cu-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: max-content;
+  animation: cu-marquee-rtl 38s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover so user can easily inspect or click */
+.cu-products-auto-scroll-section:hover .cu-marquee-group {
+  animation-play-state: paused;
+}
+
+@keyframes cu-marquee-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 10px));
+  }
+}
+
+/* Compact, Sleek Floating Product Pill (ClickUp Subdued Style - Zero Shift, Pure Smooth Hover) */
+.cu-prod-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #18181f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 5px 12px 5px 6px;
+  color: #c8c8d3;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  transition: background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, color 0.28s ease;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transform: none; /* Keep completely stationary - no jumping/shifting */
+}
+
+/* Buttery smooth hover effect without shifting or moving the logo */
+.cu-prod-pill:hover {
+  background: #23232e;
+  border-color: var(--prod-color, rgba(255, 255, 255, 0.4));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 12px var(--prod-glow, rgba(147, 51, 234, 0.35));
+  color: #ffffff;
+  transform: none; /* Zero displacement */
+}
+
+/* Active / Selected Product Pill in Marquee */
+.cu-prod-pill.active-selected {
+  background: #242432 !important;
+  border-color: var(--prod-color, #ffffff) !important;
+  box-shadow: 0 0 0 1px var(--prod-color, #ffffff), 0 0 16px var(--prod-glow, rgba(255, 255, 255, 0.45)) !important;
+  color: #ffffff !important;
+  transform: none !important;
+}
+
+.cu-prod-pill.active-selected .cu-prod-badge-icon {
+  box-shadow: 0 0 10px var(--prod-glow, rgba(255, 255, 255, 0.45));
+}
+
+/* Compact Product Icon Badge - Perfectly circular with gentle smooth scale inside pill */
+.cu-prod-badge-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--prod-color, #7928ca);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0.95;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, opacity 0.28s ease;
+}
+
+.cu-prod-pill:hover .cu-prod-badge-icon {
+  transform: scale(1.06);
+  opacity: 1;
+  box-shadow: 0 2px 8px var(--prod-color, rgba(0, 0, 0, 0.4));
+}
+
+.cu-prod-badge-icon svg {
+  width: 12px;
+  height: 12px;
+  display: block;
+  fill: currentColor;
+}
+
+.cu-prod-name {
+  color: #c4c4cf;
+  letter-spacing: 0.1px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.cu-prod-pill:hover .cu-prod-name {
+  color: #ffffff;
+}
+
+/* =======================================================
+   8. ACTION FILTER PILLS: Find, Research, Create, Analyze
+======================================================= */
+.cu-action-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 18px 12px;
+  flex-shrink: 0;
+  scrollbar-width: none; /* Firefox */
+}
+.cu-action-pills-row::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.cu-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #191920;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--cu-radius-full);
+  color: #d6d6e0;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.cu-action-pill:hover {
+  background: #252530;
+  border-color: rgba(168, 146, 254, 0.35);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.cu-action-pill svg {
+  width: 14px;
+  height: 14px;
+  color: #a0a0ae;
+}
+
+/* =======================================================
+   9. INPUT CARD & DOCK (Exact ClickUp Design)
+======================================================= */
+.cu-chat-input-container {
+  padding: 0 18px 18px;
+  flex-shrink: 0;
+}
+
+.cu-input-box {
+  background: var(--cu-bg-input);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.cu-input-box:focus-within {
+  border-color: rgba(168, 146, 254, 0.45);
+  box-shadow: 0 0 0 1px rgba(168, 146, 254, 0.3), 0 12px 35px rgba(0, 0, 0, 0.55);
+}
+
+/* Top Strip: Connect Apps & MCP Servers */
+.cu-input-top-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.cu-strip-left {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cu-text-muted);
+}
+
+.cu-strip-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cu-app-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cu-app-icon {
+  width: 17px;
+  height: 17px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.cu-strip-close {
+  background: transparent;
+  border: none;
+  color: var(--cu-text-dim);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cu-strip-close:hover {
+  color: #fff;
+}
+
+/* Active Selected Product in Input Top Strip */
+.cu-input-top-strip.has-product {
+  background: rgba(255, 255, 255, 0.035);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 14px 7px;
+}
+
+.cu-strip-selected-prod {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  animation: cu-fade-in-strip 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cu-fade-in-strip {
+  0% {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.cu-strip-prod-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--prod-color, #00bedd);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px var(--prod-glow, rgba(0, 190, 221, 0.45));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cu-strip-prod-badge svg {
+  width: 13px;
+  height: 13px;
+  fill: #ffffff;
+  stroke: none;
+  display: block;
+}
+
+.cu-strip-prod-label {
+  font-size: 11.5px;
+  color: #8c8c9e;
+  font-weight: 500;
+}
+
+.cu-strip-prod-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cu-strip-prod-status {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e2ea;
+}
+
+.cu-strip-clear-btn {
+  background: transparent;
+  border: none;
+  color: #8c8c9e;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.cu-strip-clear-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.cu-strip-clear-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Main Textarea */
+.cu-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--cu-font);
+  font-size: 14.5px;
+  line-height: 1.5;
+  padding: 12px 14px 8px;
+  resize: none;
+  max-height: 120px;
+}
+
+.cu-textarea::placeholder {
+  color: #5d5d68;
+}
+
+/* Bottom Toolbar Inside Input */
+.cu-input-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px 8px;
+}
+
+.cu-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cu-tool-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  color: var(--cu-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cu-tool-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.cu-skills-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #cfcfe0;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cu-skills-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.cu-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cu-model-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #d0d0dc;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.cu-model-selector:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.cu-mic-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--cu-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cu-mic-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.cu-send-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #7928ca 0%, #0077ff 100%);
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(121, 40, 202, 0.4);
+}
+.cu-send-action-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(121, 40, 202, 0.6);
+}
+.cu-send-action-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* =======================================================
+   10. CHAT MESSAGE STREAM (Active Conversation View)
+======================================================= */
+.cu-messages-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 12px;
+}
+
+.cu-msg-row {
+  display: flex;
+  gap: 10px;
+  animation: cu-fade 0.25s ease;
+}
+
+.cu-msg-row.user {
+  justify-content: flex-end;
+}
+
+.cu-msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #191922;
+  border: 1px solid rgba(164, 107, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: 0 0 10px rgba(110, 72, 228, 0.35);
+}
+
+.cu-msg-avatar .cu-uffisanse-svg {
+  animation: cu-mini-logo-float 3.5s ease-in-out infinite;
+}
+
+.cu-msg-content {
+  max-width: 86%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cu-msg-bubble {
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.cu-msg-row.user .cu-msg-bubble {
+  background: #2b2b36;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.cu-msg-row.ai .cu-msg-bubble {
+  background: #18181f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e2ec;
+  border-bottom-left-radius: 4px;
+}
+
+.cu-msg-bubble h3 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.cu-msg-bubble strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.cu-msg-bubble a {
+  color: #00bedd;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cu-msg-bubble a:hover {
+  color: #5fe6ff;
+}
+
+.cu-msg-bubble ul, .cu-msg-bubble ol {
+  margin: 6px 0 8px 18px;
+}
+.cu-msg-bubble li {
+  margin-bottom: 4px;
+}
+
+/* Product Card in Chat */
+.cu-product-card {
+  margin-top: 8px;
+  background: #1e1e26;
+  border: 1px solid rgba(168, 146, 254, 0.3);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cu-product-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cu-prod-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00bedd;
+}
+
+.cu-prod-badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  background: rgba(0, 119, 255, 0.2);
+  color: #72b6ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.cu-prod-desc {
+  font-size: 12px;
+  color: #bbbbca;
+  line-height: 1.4;
+}
+
+.cu-prod-links {
+  display: flex;
+  gap: 8px;
+}
+
+.cu-btn-sm {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cu-btn-sm.primary {
+  background: #0077ff;
+  color: #fff !important;
+}
+.cu-btn-sm.primary:hover {
+  background: #005ce6;
+}
+
+.cu-btn-sm.outline {
+  background: transparent;
+  color: #00bedd !important;
+  border: 1px solid rgba(0, 190, 221, 0.4);
+}
+.cu-btn-sm.outline:hover {
+  background: rgba(0, 190, 221, 0.15);
+}
+
+/* Follow-up Suggestion Chips */
+.cu-followups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.cu-followup-chip {
+  background: #1b1b24;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cfcfe0;
+  font-size: 11.5px;
+  padding: 4px 10px;
+  border-radius: var(--cu-radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cu-followup-chip:hover {
+  background: rgba(168, 146, 254, 0.2);
+  border-color: #a892fe;
+  color: #fff;
+}
+
+/* Typing Dots */
+.cu-typing {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+}
+.cu-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a892fe;
+  animation: cu-bounce 1.4s infinite ease-in-out both;
+}
+.cu-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.cu-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes cu-bounce {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* =======================================================
+   11. RESPONSIVE DESIGN
+======================================================= */
+@media (max-width: 640px) {
+  .uffizio-ai-window {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+  }
+}

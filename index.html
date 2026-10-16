@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uffizio — Telematics & IoT Solutions | AI Chat Header Integration</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Uffizio AI Chat Widget Stylesheet -->
+  <link rel="stylesheet" href="uffizio-ai-chat.css">
+
+  <style>
+    /* ============================================================
+       UFFIZIO OFFICIAL DESIGN SYSTEM REPLICATION FOR PREVIEW
+    ============================================================ */
+    :root {
+      --uffizio-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --uffizio-bg-dark: #000A1E;
+      --uffizio-bg-deep: #000512;
+      --uffizio-blue-primary: #0077FF;
+      --uffizio-blue-dark: #0b2d5d;
+      --uffizio-cyan-accent: #00BEDD;
+      --uffizio-text-white: #ffffff;
+      --uffizio-text-muted: #9BB2CE;
+      --uffizio-border-dark: rgba(0, 119, 255, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--uffizio-bg-dark);
+      color: var(--uffizio-text-white);
+      font-family: var(--uffizio-font);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Ambient Neon Glow in Background */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 119, 255, 0.15) 0%, rgba(0, 190, 221, 0.08) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header Styling */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(0, 10, 30, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--uffizio-border-dark);
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .site-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .site-logo img {
+      height: 38px;
+      width: auto;
+    }
+
+    .site-logo-fallback {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .site-logo-fallback span {
+      color: var(--uffizio-cyan-accent);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .site-nav a {
+      color: #d1e2f5;
+      text-decoration: none;
+      font-size: 14.5px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .site-nav a:hover {
+      color: var(--uffizio-cyan-accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 20px;
+      background: #0077FF;
+      color: #fff !important;
+      text-decoration: none;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 16px rgba(0, 119, 255, 0.35);
+    }
+
+    .contact-btn:hover {
+      background: #005ce6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(0, 119, 255, 0.55);
+    }
+
+    /* Main Showcase Hero Section */
+    .hero-section {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 119, 255, 0.12);
+      border: 1px solid rgba(0, 190, 221, 0.4);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--uffizio-cyan-accent);
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(0, 190, 221, 0.2);
+    }
+
+    .hero-badge .pulse-point {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+    }
+
+    .hero-title {
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 22px;
+      background: linear-gradient(180deg, #FFFFFF 30%, #9BC4F5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--uffizio-text-muted);
+      max-width: 820px;
+      margin: 0 auto 36px;
+    }
+
+    /* Highlight Trigger Callout */
+    .ai-try-banner {
+      background: linear-gradient(135deg, rgba(8, 22, 52, 0.9) 0%, rgba(14, 34, 76, 0.8) 100%);
+      border: 1px solid rgba(0, 190, 221, 0.35);
+      border-radius: 18px;
+      padding: 24px;
+      max-width: 880px;
+      margin: 0 auto 60px;
+      box-shadow: 0 10px 40px rgba(0, 10, 30, 0.6), 0 0 30px rgba(0, 119, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .ai-try-text h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ai-try-text p {
+      font-size: 13.5px;
+      color: var(--uffizio-text-muted);
+      margin: 0;
+    }
+
+    .ai-try-btn {
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #0077FF 0%, #00BEDD 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 18px rgba(0, 190, 221, 0.4);
+    }
+
+    .ai-try-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 24px rgba(0, 190, 221, 0.6);
+    }
+
+    /* Product Grid */
+    .products-grid-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: var(--uffizio-text-muted);
+      font-size: 16px;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .product-card-preview {
+      background: rgba(8, 20, 44, 0.75);
+      border: 1px solid var(--uffizio-border-dark);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .product-card-preview:hover {
+      border-color: var(--uffizio-cyan-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 119, 255, 0.2);
+    }
+
+    .card-category-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--uffizio-cyan-accent);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--uffizio-text-muted);
+      line-height: 1.5;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .card-ask-ai-link {
+      color: var(--uffizio-cyan-accent);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .card-ask-ai-link:hover {
+      gap: 10px;
+      color: #38d9ff;
+    }
+
+    /* Live Features comparison banner */
+    .stats-strip {
+      background: rgba(4, 12, 28, 0.9);
+      border-top: 1px solid var(--uffizio-border-dark);
+      border-bottom: 1px solid var(--uffizio-border-dark);
+      padding: 30px 24px;
+      margin: 40px 0;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-box h4 {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--uffizio-cyan-accent);
+      margin-bottom: 4px;
+    }
+
+    .stat-box p {
+      font-size: 13px;
+      color: var(--uffizio-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--uffizio-border-dark);
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--uffizio-text-muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 868px) {
+      .site-nav {
+        display: none;
+      }
+      .hero-title {
+        font-size: 38px;
+      }
+      .ai-try-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow"></div>
+
+  <!-- UFFIZIO OFFICIAL SITE HEADER -->
+  <header id="site-header" class="site-header">
+    <div class="header-inner">
+      
+      <!-- Brand Logo -->
+      <a href="https://uffizio.com/" class="site-logo" title="Uffizio Home">
+        <img src="https://uffizio.com/wp-content/themes/uffizio/assets/images/Uffizio-logo.svg" 
+             alt="Uffizio Logo" 
+             onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+        <div id="logo-fallback" class="site-logo-fallback" style="display: none;">
+          Uffizio<span>.AI</span>
+        </div>
+      </a>
+
+      <!-- Primary Navigation -->
+      <nav aria-label="Main menu">
+        <ul class="site-nav">
+          <li><a href="https://uffizio.com/">Home</a></li>
+          <li><a href="https://uffizio.com/#products">Products &amp; Solutions</a></li>
+          <li><a href="https://uffizio.com/about/">About Us</a></li>
+          <li><a href="https://uffizio.com/category/blog/">Discover</a></li>
+          <li><a href="https://helpdesk.uffizio.com/tickets" target="_blank">Helpdesk</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions (Where AI Chat Button is Injected) -->
+      <div class="header-contact">
+        <!-- The AI Chat Button is injected here by uffizio-ai-chat.js automatically! -->
+        <!-- Or placed directly in HTML as below: -->
+        <a href="https://uffizio.com/contact-us" class="contact-btn">Contact Us</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main>
+    <section class="hero-section">
+      <div class="hero-badge">
+        <span class="pulse-point"></span>
+        <span>ClickUp-Style AI Assistant Integration Active</span>
+      </div>
+
+      <h1 class="hero-title">Telematics &amp; IoT Solutions<br>for Business Optimization</h1>
+      
+      <p class="hero-subtitle">
+        We build software solutions that help businesses monitor, track, and manage their operations more effectively across industries with real-time GPS intelligence.
+      </p>
+
+      <!-- Quick Interactive Callout Banner -->
+      <div class="ai-try-banner">
+        <div class="ai-try-text">
+          <h3>
+            <svg width="22" height="22" viewBox="0 0 34 34" fill="none">
+              <circle cx="17" cy="8" r="6" fill="#38bdf8"/>
+              <circle cx="26" cy="17" r="6" fill="#fb7185"/>
+              <circle cx="17" cy="26" r="6" fill="#fb923c"/>
+              <circle cx="8" cy="17" r="6" fill="#818cf8"/>
+              <circle cx="17" cy="17" r="7" fill="#ffffff"/>
+            </svg>
+            ClickUp Style UffiSanse AI Assistant in the Header
+          </h3>
+          <p>Click the <strong>UffiSanse (New)</strong> button in the top navigation or click below to launch the drawer.</p>
+        </div>
+        <button class="ai-try-btn" onclick="window.uffizioAI.openChat()">
+          Launch UffiSanse &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- KEY STATS STRIP -->
+    <section class="stats-strip">
+      <div class="stats-container">
+        <div class="stat-box">
+          <h4>25+</h4>
+          <p>Years Experience</p>
+        </div>
+        <div class="stat-box">
+          <h4>100+</h4>
+          <p>Countries Served</p>
+        </div>
+        <div class="stat-box">
+          <h4>500K+</h4>
+          <p>Assets Tracked</p>
+        </div>
+        <div class="stat-box">
+          <h4>1,500+</h4>
+          <p>GPS Devices Supported</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS GRID WITH DIRECT AI PROMPTS -->
+    <section class="products-grid-section" id="products">
+      <div class="section-header">
+        <h2>Explore Uffizio's Software Ecosystem</h2>
+        <p>Click any card's AI prompt to ask Uffizio AI detailed technical and commercial questions.</p>
+      </div>
+
+      <div class="grid-cards">
+        <!-- Trakzee -->
+        <div class="product-card-preview">
+          <div>
+            <div class="card-category-badge">Telematics</div>
+            <h3 class="card-title">Trakzee</h3>
+            <p class="card-desc">Advanced Fleet Management with fuel drainage alerts, driver behavior analytics, and predictive maintenance schedules.</p>
+          </div>
+          <a class="card-ask-ai-link" onclick="window.uffizioAI.openChat(); window.uffizioAI.sendQuery('How does Trakzee prevent fuel theft in trucks?'); return false;">
+            Ask AI about Trakzee &rarr;
+          </a>
+        </div>
+
+        <!-- Smartbus -->
+        <div class="product-card-preview">
+          <div>
+            <div class="card-category-badge">Commute</div>
+            <h3 class="card-title">Smartbus</h3>
+            <p class="card-desc">School bus tracking ecosystem featuring parent mobile apps, RFID student attendance, and driver safety monitors.</p>
+          </div>
+          <a class="card-ask-ai-link" onclick="window.uffizioAI.openChat(); window.uffizioAI.sendQuery('Explain Smartbus Parent App and RFID attendance'); return false;">
+            Ask AI about Smartbus &rarr;
+          </a>
+        </div>
+
+        <!-- Smart Waste -->
+        <div class="product-card-preview">
+          <div>
+            <div class="card-category-badge">Telematics</div>
+            <h3 class="card-title">Smart Waste</h3>
+            <p class="card-desc">Ultrasonic bin level monitoring with dynamic route optimization cutting municipal collection costs by up to 35%.</p>
+          </div>
+          <a class="card-ask-ai-link" onclick="window.uffizioAI.openChat(); window.uffizioAI.sendQuery('How does Smart Waste optimize route collection?'); return false;">
+            Ask AI about Smart Waste &rarr;
+          </a>
+        </div>
+
+        <!-- Elexee -->
+        <div class="product-card-preview">
+          <div>
+            <div class="card-category-badge">Telematics / EV</div>
+            <h3 class="card-title">Elexee</h3>
+            <p class="card-desc">Electric vehicle fleet management monitoring battery State of Charge (SoC), charging cycles, and thermal anomalies.</p>
+          </div>
+          <a class="card-ask-ai-link" onclick="window.uffizioAI.openChat(); window.uffizioAI.sendQuery('What EV battery parameters does Elexee track?'); return false;">
+            Ask AI about Elexee &rarr;
+          </a>
+        </div>
+
+        <!-- Taskeye -->
+        <div class="product-card-preview">
+          <div>
+            <div class="card-category-badge">IOTech</div>
+            <h3 class="card-title">Taskeye</h3>
+            <p class="card-desc">Field workforce management with geo-fenced selfie attendance, task milestone tracking, and automated travel expense calculation.</p>
+          </div>
+          <a class="card-ask-ai-link" onclick="window.uffizioAI.openChat(); window.uffizioAI.sendQuery('How does Taskeye calculate field travel reimbursement?'); return false;">
+            Ask AI about Taskeye &rarr;
+          </a>
+        </div>
+
+        <!-- 1500+ Hardware -->
+        <div class="product-card-preview">
+          <div>
+            <div class="card-category-badge">Hardware Ecosystem</div>
+            <h3 class="card-title">1,500+ Devices</h3>
+            <p class="card-desc">Seamless plug-and-play compatibility with Teltonika, Concox, Queclink, Suntech, Ruptela, and BLE wireless sensors.</p>
+          </div>
+          <a class="card-ask-ai-link" onclick="window.uffizioAI.openChat(); window.uffizioAI.sendQuery('Which Teltonika and Concox GPS models are supported?'); return false;">
+            Ask AI about Hardware &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Uffizio. All rights reserved. • Telematics &amp; IoT Solutions</p>
+  </footer>
+
+  <!-- Uffizio Knowledge Base Engine -->
+  <script src="uffizio-knowledge.js"></script>
+
+  <!-- Uffizio AI Chat Controller -->
+  <script src="uffizio-ai-chat.js"></script>
+
+</body>
+</html>
