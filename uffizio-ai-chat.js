@@ -72,6 +72,7 @@
     // Uffizio AI Logo: White Rotating Star with Smooth Rhythmic Music Waves
     flower: `
       <div class="cu-flower-icon-wrap">
+        <div class="cu-music-wave cu-wave-fullscreen-bloom"></div>
         <div class="cu-music-wave cu-wave-subbass"></div>
         <div class="cu-music-wave cu-wave-harmonic"></div>
         <div class="cu-music-wave cu-wave-beat"></div>
@@ -837,7 +838,13 @@
       this.isOpen = true;
       const win = document.getElementById('uffizio-ai-window');
       const overlay = document.getElementById('uffizio-ai-modal-overlay');
-      if (win) win.classList.add('open');
+      if (win) {
+        win.classList.remove('wave-intro');
+        // Force reflow so entrance animation restarts freshly every time
+        void win.offsetWidth;
+        win.classList.add('open');
+        win.classList.add('wave-intro');
+      }
       if (overlay) overlay.classList.add('open');
       document.body.classList.add('uffizio-ai-sidebar-open');
       setTimeout(() => document.getElementById('cu-textarea')?.focus(), 250);
@@ -848,7 +855,10 @@
       this.closeNewChatDropdown();
       const win = document.getElementById('uffizio-ai-window');
       const overlay = document.getElementById('uffizio-ai-modal-overlay');
-      if (win) win.classList.remove('open');
+      if (win) {
+        win.classList.remove('open');
+        win.classList.remove('wave-intro');
+      }
       if (overlay) overlay.classList.remove('open');
       document.body.classList.remove('uffizio-ai-sidebar-open');
     }
@@ -894,6 +904,12 @@
      */
     startNewConversation() {
       this.clearChat();
+      const win = document.getElementById('uffizio-ai-window');
+      if (win) {
+        win.classList.remove('wave-intro');
+        void win.offsetWidth;
+        win.classList.add('wave-intro');
+      }
       this.showToast('Started new conversation', ICONS.reset);
     }
 
