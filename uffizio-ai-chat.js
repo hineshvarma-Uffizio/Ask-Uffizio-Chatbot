@@ -340,8 +340,8 @@
         <div class="cu-chat-input-container">
           <div class="cu-input-box">
             
-            <!-- Top Strip: Selected Product Context or Default IoT Protocols -->
-            <div class="cu-input-top-strip" id="cu-input-strip">
+            <!-- Top Strip: Selected Product Context (Hidden when no product selected) -->
+            <div class="cu-input-top-strip ${this.selectedProduct ? 'has-product' : ''}" id="cu-input-strip">
               ${this.renderProductStripHtml()}
             </div>
 
@@ -1010,39 +1010,24 @@
     /**
      * Render HTML for the input top strip:
      * When product selected: displays product logo, name, status and clear button.
-     * When no product selected: displays default IoT & GPS Protocols with icons.
+     * When no product selected: returns empty string (no strip).
      */
     renderProductStripHtml() {
-      if (this.selectedProduct) {
-        const p = this.selectedProduct;
-        return `
-          <div class="cu-strip-selected-prod" style="--prod-color: ${p.color}; --prod-glow: ${p.glow};">
-            <span class="cu-strip-prod-badge" style="background: ${p.color}; box-shadow: 0 0 10px ${p.glow};">
-              ${p.icon}
-            </span>
-            <span class="cu-strip-prod-label">Discussing:</span>
-            <span class="cu-strip-prod-name" style="color: ${p.color};">${p.name}</span>
-            <span class="cu-strip-prod-status">Active Context</span>
-          </div>
-          <div class="cu-strip-right">
-            <button class="cu-strip-clear-btn" id="cu-strip-clear-prod" title="Clear ${p.name} context" type="button">
-              ${ICONS.close}
-            </button>
-          </div>
-        `;
-      }
-
+      if (!this.selectedProduct) return '';
+      const p = this.selectedProduct;
       return `
-        <span class="cu-strip-left">Connect Telematics &amp; GPS Protocols</span>
+        <div class="cu-strip-selected-prod" style="--prod-color: ${p.color}; --prod-glow: ${p.glow};">
+          <span class="cu-strip-prod-badge" style="background: ${p.color}; box-shadow: 0 0 10px ${p.glow};">
+            ${p.icon}
+          </span>
+          <span class="cu-strip-prod-label">Discussing:</span>
+          <span class="cu-strip-prod-name" style="color: ${p.color};">${p.name}</span>
+          <span class="cu-strip-prod-status">Active Context</span>
+        </div>
         <div class="cu-strip-right">
-          <div class="cu-app-icons">
-            <span class="cu-app-icon" title="Teltonika">📡</span>
-            <span class="cu-app-icon" title="Concox / Jimi IoT">🛰️</span>
-            <span class="cu-app-icon" title="CAN Bus & OBD">🚗</span>
-            <span class="cu-app-icon" title="Google Maps API">🗺️</span>
-            <span class="cu-app-icon" title="BLE Fuel Sensors">⛽</span>
-          </div>
-          <button class="cu-strip-close" id="cu-strip-close" title="Dismiss" type="button">${ICONS.close}</button>
+          <button class="cu-strip-clear-btn" id="cu-strip-clear-prod" title="Clear ${p.name} context" type="button">
+            ${ICONS.close}
+          </button>
         </div>
       `;
     }
@@ -1056,7 +1041,6 @@
 
       if (this.selectedProduct) {
         strip.classList.add('has-product');
-        strip.style.display = 'flex';
       } else {
         strip.classList.remove('has-product');
       }
@@ -1069,13 +1053,7 @@
      * Bind click events on strip buttons
      */
     bindStripEvents() {
-      const strip = document.getElementById('cu-input-strip');
-      const stripClose = document.getElementById('cu-strip-close');
       const clearProd = document.getElementById('cu-strip-clear-prod');
-
-      stripClose?.addEventListener('click', () => {
-        if (strip) strip.style.display = 'none';
-      });
 
       clearProd?.addEventListener('click', (e) => {
         e.stopPropagation();
