@@ -544,7 +544,6 @@
 
             <div class="cu-hero-prompt-block">
               <h3 class="cu-hero-question">How can Uffizio AI assist your fleet?</h3>
-              <p class="cu-hero-subtext">Ask anything about GPS tracking, fuel theft prevention, video telematics, or smart sensors.</p>
             </div>
 
             <!-- Single Line Auto-Scrolling Floating Products Marquee (Strictly Right to Left, No Clipping) -->
