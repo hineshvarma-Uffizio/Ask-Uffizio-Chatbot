@@ -318,7 +318,6 @@
           </div>
           <div class="cu-topbar-actions">
             <button class="cu-top-btn" id="cu-btn-clear" title="Clear context">${ICONS.slashCircle}</button>
-            <button class="cu-top-btn" id="cu-btn-dock" title="Expand view">${ICONS.dockWindow}</button>
             <button class="cu-top-btn" id="cu-btn-close" title="Close UffiSanse">${ICONS.doubleChevronRight}</button>
           </div>
         </div>
@@ -376,7 +375,6 @@
     bindEvents() {
       const closeBtn = document.getElementById('cu-btn-close');
       const clearBtn = document.getElementById('cu-btn-clear');
-      const dockBtn = document.getElementById('cu-btn-dock');
       const newChatBtn = document.getElementById('cu-newchat-pill');
       const actionNewConv = document.getElementById('cu-action-new-conv');
       const actionShareSummary = document.getElementById('cu-action-share-summary');
@@ -425,19 +423,6 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           this.closeNewChatDropdown();
-        }
-      });
-
-      // Toggle Dock full
-      dockBtn?.addEventListener('click', () => {
-        const win = document.getElementById('uffizio-ai-window');
-        this.isDockedFull = !this.isDockedFull;
-        if (win) {
-          if (this.isDockedFull) {
-            win.classList.add('docked-full');
-          } else {
-            win.classList.remove('docked-full');
-          }
         }
       });
 

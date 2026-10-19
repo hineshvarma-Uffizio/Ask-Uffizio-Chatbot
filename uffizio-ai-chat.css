@@ -201,16 +201,7 @@
   }
 }
 
-.uffizio-ai-window.docked-full {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 780px;
-  border-radius: 0;
-  border-top: none;
-  border-bottom: none;
-  border-right: none;
-}
+
 
 .uffizio-ai-window.minimized {
   height: 60px !important;
