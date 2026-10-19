@@ -1086,80 +1086,18 @@
   color: #5d5d68;
 }
 
-/* Bottom Toolbar Inside Input */
+/* Bottom Toolbar Inside Input (Mic & Send action buttons) */
 .cu-input-bottom-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 6px 10px 8px;
-}
-
-.cu-bottom-left {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.cu-tool-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: transparent;
-  border: none;
-  color: var(--cu-text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.cu-tool-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-.cu-skills-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  color: #cfcfe0;
-  padding: 4px 8px;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.cu-skills-pill:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
 }
 
 .cu-bottom-right {
   display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.cu-model-selector {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  color: #d0d0dc;
-  font-size: 12.5px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-.cu-model-selector:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  gap: 8px;
 }
 
 .cu-mic-btn {

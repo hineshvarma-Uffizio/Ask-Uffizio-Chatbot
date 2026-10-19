@@ -353,21 +353,9 @@
               rows="1"
             ></textarea>
 
-            <!-- Bottom Toolbar inside input -->
+            <!-- Bottom Toolbar inside input (Mic & Send action buttons) -->
             <div class="cu-input-bottom-bar">
-              <div class="cu-bottom-left">
-                <button class="cu-tool-btn" title="Add context / device">${ICONS.plus}</button>
-                <button class="cu-skills-pill" id="cu-skills-btn">
-                  ${ICONS.zap}
-                  <span>Skills</span>
-                </button>
-              </div>
               <div class="cu-bottom-right">
-                <button class="cu-model-selector" id="cu-model-selector">
-                  ${getUffiSanseSvg(15, 'model_sel')}
-                  <span id="cu-model-label">Max</span>
-                  ${ICONS.chevronDown}
-                </button>
                 <button class="cu-mic-btn" id="cu-mic-btn" title="Voice Input">${ICONS.mic}</button>
                 <button class="cu-send-action-btn" id="cu-send-btn" title="Send" disabled>${ICONS.send}</button>
               </div>
@@ -396,8 +384,6 @@
       const textarea = document.getElementById('cu-textarea');
       const sendBtn = document.getElementById('cu-send-btn');
       const micBtn = document.getElementById('cu-mic-btn');
-      const modelSelector = document.getElementById('cu-model-selector');
-      const skillsBtn = document.getElementById('cu-skills-btn');
 
       closeBtn?.addEventListener('click', () => this.closeChat());
       clearBtn?.addEventListener('click', () => this.clearChat());
@@ -482,20 +468,6 @@
           const prompt = pill.getAttribute('data-prompt');
           if (prompt) this.sendQuery(prompt);
         });
-      });
-
-      // Model selector toggle
-      modelSelector?.addEventListener('click', () => {
-        const modes = ['UffiSanse Max', 'Fast Engine', 'Gemini Flash'];
-        const curIdx = modes.indexOf(this.currentMode);
-        this.currentMode = modes[(curIdx + 1) % modes.length];
-        const label = document.getElementById('cu-model-label');
-        if (label) label.textContent = this.currentMode.replace('UffiSanse ', '');
-      });
-
-      // Skills toggle
-      skillsBtn?.addEventListener('click', () => {
-        this.sendQuery('What are UffiSanse’s core skills and supported capabilities?');
       });
 
       // Speech Recognition
