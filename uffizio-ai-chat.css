@@ -921,7 +921,7 @@
 
 .cu-action-pill:hover {
   background: #252530;
-  border-color: rgba(168, 146, 254, 0.35);
+  border-color: rgba(0, 119, 255, 0.45);
   color: #ffffff;
   transform: translateY(-1px);
 }
@@ -951,9 +951,13 @@
   transition: all 0.25s ease;
 }
 
+.cu-input-box:hover {
+  border-color: rgba(0, 119, 255, 0.4);
+}
+
 .cu-input-box:focus-within {
-  border-color: rgba(168, 146, 254, 0.45);
-  box-shadow: 0 0 0 1px rgba(168, 146, 254, 0.3), 0 12px 35px rgba(0, 0, 0, 0.55);
+  border-color: #0077ff;
+  box-shadow: 0 0 0 1px #0077ff, 0 12px 35px rgba(0, 119, 255, 0.25);
 }
 
 /* Top Strip: Selected Product Context (Hidden by default, only visible when a product is selected) */
@@ -1071,6 +1075,7 @@
   padding: 12px 14px 8px;
   resize: none;
   max-height: 120px;
+  caret-color: #0077ff;
 }
 
 .cu-textarea::placeholder {
