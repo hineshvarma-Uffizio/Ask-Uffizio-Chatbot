@@ -317,7 +317,6 @@
             </div>
           </div>
           <div class="cu-topbar-actions">
-            <button class="cu-top-btn" id="cu-btn-clear" title="Clear context">${ICONS.slashCircle}</button>
             <button class="cu-top-btn" id="cu-btn-close" title="Close UffiSanse">${ICONS.doubleChevronRight}</button>
           </div>
         </div>
@@ -374,7 +373,6 @@
 
     bindEvents() {
       const closeBtn = document.getElementById('cu-btn-close');
-      const clearBtn = document.getElementById('cu-btn-clear');
       const newChatBtn = document.getElementById('cu-newchat-pill');
       const actionNewConv = document.getElementById('cu-action-new-conv');
       const actionShareSummary = document.getElementById('cu-action-share-summary');
@@ -384,7 +382,6 @@
       const micBtn = document.getElementById('cu-mic-btn');
 
       closeBtn?.addEventListener('click', () => this.closeChat());
-      clearBtn?.addEventListener('click', () => this.clearChat());
 
       // Dropdown toggle on New Chat button
       newChatBtn?.addEventListener('click', (e) => {
