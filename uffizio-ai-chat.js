@@ -313,13 +313,7 @@
           <!-- Dynamically swapped between Hero Idle State and Messages Thread -->
         </div>
 
-        <!-- ACTION PILLS ROW: Only Find Button Kept -->
-        <div class="cu-action-pills-row" id="cu-action-pills-row">
-          <button class="cu-action-pill" data-prompt="Find best GPS fleet software for trucks and logistics">
-            ${ICONS.search}
-            <span>Find</span>
-          </button>
-        </div>
+
 
         <!-- INPUT BOX (Exact ClickUp Design) -->
         <div class="cu-chat-input-container">
@@ -391,13 +385,7 @@
 
       sendBtn?.addEventListener('click', () => this.submitQuery());
 
-      // Action Pills click
-      document.querySelectorAll('.cu-action-pill').forEach((pill) => {
-        pill.addEventListener('click', () => {
-          const prompt = pill.getAttribute('data-prompt');
-          if (prompt) this.sendQuery(prompt);
-        });
-      });
+
 
       // Speech Recognition
       if (CONFIG.enableSpeechInput && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
@@ -441,11 +429,9 @@
 
     renderBody() {
       const scrollable = document.getElementById('cu-chat-scrollable');
-      const actionPills = document.getElementById('cu-action-pills-row');
       if (!scrollable) return;
 
       if (this.messages.length === 0) {
-        if (actionPills) actionPills.style.display = 'flex';
 
         const renderPills = (arr) => {
           return arr
@@ -510,8 +496,6 @@
         });
       } else {
         // Active Messages View
-        if (actionPills) actionPills.style.display = 'none';
-
         scrollable.innerHTML = `
           <div class="cu-messages-thread" id="cu-messages-thread"></div>
         `;
