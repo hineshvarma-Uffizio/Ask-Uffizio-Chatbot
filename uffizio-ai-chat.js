@@ -9,7 +9,7 @@
   const CONFIG = Object.assign(
     {
       headerTargetSelector: '.header-contact',
-      headerButtonText: 'Ask Uffizio',
+      headerButtonText: 'Ask Zio',
       enableFloatingLauncher: true,
       enableSpeechInput: true,
       geminiApiKey: '',
@@ -244,7 +244,7 @@
       btn.type = 'button';
       btn.innerHTML = `
         <span class="brain-sparkle-flower">${getUffiSanseSvg(18, 'header_btn')}</span>
-        <span class="ai-btn-text">Ask Uffizio</span>
+        <span class="ai-btn-text">${CONFIG.headerButtonText}</span>
       `;
 
       btn.addEventListener('click', (e) => {

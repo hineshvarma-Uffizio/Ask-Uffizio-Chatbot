@@ -1,4 +1,4 @@
-# Ask Uffizio — AI Telematics & Fleet Chatbot
+# Ask Zio — AI Telematics & Fleet Chatbot
 
 Interactive, ClickUp Brain-style AI Chatbot Widget designed for **Uffizio.com** and telematics fleet management software solutions.
 
@@ -6,7 +6,7 @@ Interactive, ClickUp Brain-style AI Chatbot Widget designed for **Uffizio.com** 
 
 ## 🌟 Key Features
 
-1. **Header Button ("Ask Uffizio")**:
+1. **Header Button ("Ask Zio")**:
    - Modern button with official brand gradient star icon.
    - Smooth perimeter specular spark circling around the icon.
    - Fully responsive on desktop and mobile.
