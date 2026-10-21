@@ -295,29 +295,15 @@
       win.id = 'uffizio-ai-window';
       win.className = 'uffizio-ai-window';
       win.innerHTML = `
-        <!-- TOPBAR: New Chat ⌵ with Dropdown and right icons -->
+        <!-- TOPBAR: New Chat Button and Right Icons (Download & Cancel) -->
         <div class="cu-topbar">
           <div class="cu-newchat-wrapper">
-            <button class="cu-newchat-pill" id="cu-newchat-pill" type="button" aria-haspopup="true" aria-expanded="false">
+            <button class="cu-newchat-pill" id="cu-newchat-pill" type="button" title="Start New Conversation">
               <span>New Chat</span>
-              ${ICONS.chevronDown}
             </button>
-            <div class="cu-newchat-dropdown" id="cu-newchat-dropdown">
-              <button class="cu-dropdown-item" id="cu-action-new-conv" type="button">
-                <span class="cu-dropdown-icon cu-icon-reset">${ICONS.reset}</span>
-                <span class="cu-dropdown-text">New Conversation</span>
-              </button>
-              <button class="cu-dropdown-item" id="cu-action-share-summary" type="button">
-                <span class="cu-dropdown-icon cu-icon-share">${ICONS.share}</span>
-                <span class="cu-dropdown-text">Share Summary</span>
-              </button>
-              <button class="cu-dropdown-item" id="cu-action-download-txt" type="button">
-                <span class="cu-dropdown-icon cu-icon-download">${ICONS.download}</span>
-                <span class="cu-dropdown-text">Download Transcript<br><span class="cu-dropdown-subtext">(.txt)</span></span>
-              </button>
-            </div>
           </div>
           <div class="cu-topbar-actions">
+            <button class="cu-top-btn" id="cu-btn-download" title="Download Transcript (.txt)">${ICONS.download}</button>
             <button class="cu-top-btn" id="cu-btn-close" title="Close">${ICONS.cancel}</button>
           </div>
         </div>
@@ -374,55 +360,15 @@
 
     bindEvents() {
       const closeBtn = document.getElementById('cu-btn-close');
+      const downloadBtn = document.getElementById('cu-btn-download');
       const newChatBtn = document.getElementById('cu-newchat-pill');
-      const actionNewConv = document.getElementById('cu-action-new-conv');
-      const actionShareSummary = document.getElementById('cu-action-share-summary');
-      const actionDownloadTxt = document.getElementById('cu-action-download-txt');
       const textarea = document.getElementById('cu-textarea');
       const sendBtn = document.getElementById('cu-send-btn');
       const micBtn = document.getElementById('cu-mic-btn');
 
       closeBtn?.addEventListener('click', () => this.closeChat());
-
-      // Dropdown toggle on New Chat button
-      newChatBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.toggleNewChatDropdown();
-      });
-
-      // Dropdown menu actions
-      actionNewConv?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.closeNewChatDropdown();
-        this.startNewConversation();
-      });
-
-      actionShareSummary?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.closeNewChatDropdown();
-        this.shareSummary();
-      });
-
-      actionDownloadTxt?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.closeNewChatDropdown();
-        this.downloadTranscript();
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', (e) => {
-        const wrapper = document.querySelector('.cu-newchat-wrapper');
-        if (wrapper && !wrapper.contains(e.target)) {
-          this.closeNewChatDropdown();
-        }
-      });
-
-      // Close dropdown on Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          this.closeNewChatDropdown();
-        }
-      });
+      downloadBtn?.addEventListener('click', () => this.downloadTranscript());
+      newChatBtn?.addEventListener('click', () => this.startNewConversation());
 
       // Bind input strip close / clear buttons
       this.bindStripEvents();
