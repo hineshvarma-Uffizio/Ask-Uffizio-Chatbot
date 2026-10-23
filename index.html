@@ -158,110 +158,322 @@
       box-shadow: 0 6px 22px rgba(0, 119, 255, 0.55);
     }
 
-    /* Main Showcase Hero Section */
+    /* ============================================================
+       UFFIZIO OFFICIAL HERO: ROTATING TEXT & SMOKE WIPE
+    ============================================================ */
     .hero-section {
       position: relative;
       z-index: 1;
-      max-width: 1280px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 80px 24px 60px;
+      padding: 60px 20px 40px;
       text-align: center;
     }
 
-    .hero-badge {
-      display: inline-flex;
+    .uffizio-hero-text.uffizio-hero-style-two {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      background: rgba(0, 119, 255, 0.12);
-      border: 1px solid rgba(0, 190, 221, 0.4);
-      border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--uffizio-cyan-accent);
-      margin-bottom: 24px;
-      box-shadow: 0 0 20px rgba(0, 190, 221, 0.2);
+      justify-content: center;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 8px;
     }
 
-    .hero-badge .pulse-point {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10B981;
-      box-shadow: 0 0 8px #10B981;
-    }
-
-    .hero-title {
-      font-size: 54px;
+    .uffizio-line-two {
+      font-size: clamp(34px, 5.2vw, 64px);
       font-weight: 700;
       line-height: 1.15;
-      letter-spacing: -1px;
-      margin-bottom: 22px;
-      background: linear-gradient(180deg, #FFFFFF 30%, #9BC4F5 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 18px;
-      line-height: 1.6;
-      color: var(--uffizio-text-muted);
-      max-width: 820px;
-      margin: 0 auto 36px;
-    }
-
-    /* Highlight Trigger Callout */
-    .ai-try-banner {
-      background: linear-gradient(135deg, rgba(8, 22, 52, 0.9) 0%, rgba(14, 34, 76, 0.8) 100%);
-      border: 1px solid rgba(0, 190, 221, 0.35);
-      border-radius: 18px;
-      padding: 24px;
-      max-width: 880px;
-      margin: 0 auto 60px;
-      box-shadow: 0 10px 40px rgba(0, 10, 30, 0.6), 0 0 30px rgba(0, 119, 255, 0.15);
+      letter-spacing: -0.03em;
+      color: #ffffff;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .uffizio-rotating-text-wrapper {
+      display: inline-grid;
+      vertical-align: bottom;
+    }
+
+    .uffizio-rotating-text {
+      display: inline-grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      height: 1.15em;
+      overflow: hidden;
       text-align: left;
     }
 
-    .ai-try-text h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .uffizio-rotating-text span {
+      grid-area: 1 / 1;
+      color: #0077FF;
+      display: inline-block;
+      opacity: 0;
+      font-weight: 800;
+      will-change: opacity, filter;
+
+      -webkit-mask-image: linear-gradient(to right, black 45%, rgba(0, 0, 0, 0.2) 60%, transparent 80%);
+      mask-image: linear-gradient(to right, black 45%, rgba(0, 0, 0, 0.2) 60%, transparent 80%);
+      -webkit-mask-size: 300% 100%;
+      mask-size: 300% 100%;
+
+      animation: uffizio-smoke-wipe 14s infinite ease-in-out;
     }
 
-    .ai-try-text p {
-      font-size: 13.5px;
-      color: var(--uffizio-text-muted);
-      margin: 0;
+    .uffizio-rotating-text span:nth-child(1) { animation-delay: 0s; }
+    .uffizio-rotating-text span:nth-child(2) { animation-delay: 3.5s; }
+    .uffizio-rotating-text span:nth-child(3) { animation-delay: 7s; }
+    .uffizio-rotating-text span:nth-child(4) { animation-delay: 10.5s; }
+
+    @keyframes uffizio-smoke-wipe {
+      0% {
+        opacity: 0;
+        filter: blur(8px);
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+      }
+      6% {
+        opacity: 1;
+      }
+      18% {
+        opacity: 1;
+        filter: blur(0);
+        -webkit-mask-position: 0% 0;
+        mask-position: 0% 0;
+      }
+      30% {
+        opacity: 1;
+        filter: blur(0);
+      }
+      34% {
+        opacity: 0;
+        filter: blur(2px);
+      }
+      100% {
+        opacity: 0;
+      }
     }
 
-    .ai-try-btn {
-      padding: 10px 24px;
-      background: linear-gradient(135deg, #0077FF 0%, #00BEDD 100%);
-      color: #fff;
-      border: none;
-      border-radius: 9999px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
+    .uffizio-title-widget.dark-mode {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 36px;
+      padding: 0 20px;
+    }
+
+    .uffizio-subtitle {
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 14px;
+    }
+
+    /* ============================================================
+       UFFIZIO PROCESS FLOW SCANNER (3D GLIDE & LASER BEAM)
+    ============================================================ */
+    #uffizio-process-59532d48 {
+      position: relative;
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto 36px;
+      height: 440px;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    #uffizio-process-59532d48.uffizio-waiting .upf-stream,
+    #uffizio-process-59532d48.uffizio-waiting canvas,
+    #uffizio-process-59532d48.uffizio-waiting .upf-ascii-side {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    #uffizio-process-59532d48 .upf-stream {
+      position: absolute;
+      width: 100%;
+      height: 310px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      isolation: isolate;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%);
+    }
+
+    #uffizio-process-59532d48 .upf-line {
+      position: absolute;
+      inset: 0;
+      cursor: grab;
+      user-select: none;
+      touch-action: pan-y;
+      z-index: 10 !important;
+    }
+
+    #uffizio-process-59532d48 .upf-line:active {
+      cursor: grabbing;
+    }
+
+    #uffizio-process-59532d48 .upf-card-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: transparent;
+      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    #uffizio-process-59532d48 .upf-photo-side,
+    #uffizio-process-59532d48 .upf-ascii-side {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    #uffizio-process-59532d48 .upf-photo-side {
+      clip-path: inset(0 0 0 var(--clip-right, 0%));
+    }
+
+    #uffizio-process-59532d48 .upf-photo-side img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(1.08) contrast(1.08);
+      pointer-events: none;
+    }
+
+    #uffizio-process-59532d48 .upf-ascii-side {
+      clip-path: inset(0 calc(100% - var(--clip-left, 0%)) 0 0);
+      background-image: url('assets/ascii-code-texture.webp');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    #uffizio-process-59532d48-particleCanvas,
+    #uffizio-process-59532d48-scannerCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100% !important;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      transform: translate3d(0, 0, 0);
+      will-change: transform, opacity;
+    }
+
+    #uffizio-process-59532d48-particleCanvas {
+      z-index: 20 !important;
+    }
+
+    #uffizio-process-59532d48-scannerCanvas {
+      z-index: 30 !important;
+    }
+
+    #uffizio-process-59532d48 .upf-canvas-active {
+      opacity: 1 !important;
+    }
+
+    #uffizio-process-59532d48 .upf-center-line {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 6px;
+      height: 88%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      border-radius: 20px;
+      pointer-events: none;
+      background:
+        radial-gradient(78.86% 97.78% at 48.89% 2.22%, rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(90deg, rgba(0, 119, 255, 0.4) 0%, rgba(0, 71, 153, 0) 100%),
+        linear-gradient(0deg, #0077FF, #0077FF);
+      box-shadow:
+        10px 0px 42px 2px rgba(10, 124, 255, 0.9),
+        5px 5px 16px 0px rgba(10, 124, 255, 0.75),
+        0px 2px 10px 0px rgba(10, 124, 255, 0.65),
+        0px 1px 5px 0px rgba(10, 124, 255, 0.65),
+        1.5px 1.5px 3px 0px rgba(255, 255, 255, 0.45) inset;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    @media (max-width: 767px) {
+      #uffizio-process-59532d48 {
+        height: 200px;
+        perspective: none;
+        transform-style: flat;
+      }
+      #uffizio-process-59532d48 .upf-stream {
+        height: 140px;
+        transform-style: flat;
+      }
+      #uffizio-process-59532d48 .upf-line,
+      #uffizio-process-59532d48 .upf-card-wrap {
+        transform-style: flat;
+      }
+      #uffizio-process-59532d48-particleCanvas {
+        display: none !important;
+      }
+      #uffizio-process-59532d48-scannerCanvas {
+        top: 0 !important;
+        height: 100% !important;
+        transform: translate3d(0, 0, 0) !important;
+        z-index: 30 !important;
+      }
+      #uffizio-process-59532d48 .upf-center-line {
+        width: 3px;
+        height: 85%;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: #0077FF;
+        box-shadow: 0px 0px 10px 2px rgba(0, 119, 255, 0.9);
+      }
+    }
+
+    /* Ask AI Hint Pill */
+    .hero-ai-hint {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      white-space: nowrap;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(0, 119, 255, 0.1);
+      border: 1px solid rgba(0, 119, 255, 0.35);
+      border-radius: 9999px;
+      padding: 10px 24px;
+      margin: 0 auto 50px;
+      font-size: 14px;
+      color: #d8e8ff;
+      cursor: pointer;
       transition: all 0.25s ease;
-      box-shadow: 0 4px 18px rgba(0, 190, 221, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 119, 255, 0.2);
     }
-
-    .ai-try-btn:hover {
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 6px 24px rgba(0, 190, 221, 0.6);
+    .hero-ai-hint:hover {
+      background: rgba(0, 119, 255, 0.22);
+      border-color: #0077ff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(0, 119, 255, 0.45);
+      color: #ffffff;
+    }
+    .hero-ai-hint strong {
+      color: #38bdf8;
+    }
+    .hero-ai-hint .ai-hint-arrow {
+      color: #0077ff;
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+    .hero-ai-hint:hover .ai-hint-arrow {
+      transform: translateX(4px);
     }
 
     /* Product Grid */
@@ -450,38 +662,77 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION: EXACT UFFIZIO OFFICIAL DESIGN -->
   <main>
     <section class="hero-section">
-      <div class="hero-badge">
-        <span class="pulse-point"></span>
-        <span>ClickUp-Style AI Assistant Integration Active</span>
+      <div class="uffizio-hero-text uffizio-hero-style-two">
+        <div class="uffizio-line-two">
+          Empowering Businesses with
+          <span class="uffizio-rotating-text-wrapper">
+            <span class="uffizio-rotating-text">
+              <span>Monitoring</span>
+              <span>Tracking</span>
+              <span>Visibility</span>
+              <span>Control</span>
+            </span>
+          </span>
+        </div>
       </div>
 
-      <h1 class="hero-title">Telematics &amp; IoT Solutions<br>for Business Optimization</h1>
-      
-      <p class="hero-subtitle">
-        We build software solutions that help businesses monitor, track, and manage their operations more effectively across industries with real-time GPS intelligence.
-      </p>
-
-      <!-- Quick Interactive Callout Banner -->
-      <div class="ai-try-banner">
-        <div class="ai-try-text">
-          <h3>
-            <svg width="22" height="22" viewBox="0 0 34 34" fill="none">
-              <circle cx="17" cy="8" r="6" fill="#38bdf8"/>
-              <circle cx="26" cy="17" r="6" fill="#fb7185"/>
-              <circle cx="17" cy="26" r="6" fill="#fb923c"/>
-              <circle cx="8" cy="17" r="6" fill="#818cf8"/>
-              <circle cx="17" cy="17" r="7" fill="#ffffff"/>
-            </svg>
-            ClickUp Style UffiSanse AI Assistant in the Header
-          </h3>
-          <p>Click the <strong>UffiSanse (New)</strong> button in the top navigation or click below to launch the drawer.</p>
+      <div class="uffizio-title-widget dark-mode">
+        <div class="uffizio-title-content">
+          <p class="uffizio-subtitle">
+            We build software solutions that help businesses monitor, track, and manage their operations more effectively across industries.
+          </p>
         </div>
-        <button class="ai-try-btn" onclick="window.uffizioAI.openChat()">
-          Launch UffiSanse &rarr;
-        </button>
+      </div>
+
+      <!-- INTERACTIVE PROCESS FLOW SCANNER (EXACT CARD STAGE) -->
+      <div id="uffizio-process-59532d48" class="uffizio-waiting">
+        <canvas id="uffizio-process-59532d48-particleCanvas"></canvas>
+
+        <div class="upf-stream">
+          <div class="upf-line" id="uffizio-process-59532d48-cardLine">
+            <div class="upf-card-wrap" style="width:600px; height:300px; top:50%; transform:translate3d(0px,-50%,0);">
+              <div class="upf-photo-side" style="--clip-right:100%;">
+                <img src="assets/flow-1.webp" alt="Telematics Live Map & Assets" loading="eager" fetchpriority="high">
+              </div>
+              <div class="upf-ascii-side" style="--clip-left:100%;"></div>
+            </div>
+
+            <!-- flow-2: The exact Fuel Drain, Truck & TPMS Axle 1 card shown in screenshot -->
+            <div class="upf-card-wrap" style="width:600px; height:300px; top:50%; transform:translate3d(750px,-50%,0);">
+              <div class="upf-photo-side" style="--clip-right:50%;">
+                <img src="assets/flow-2.webp" alt="Fuel Drainage Alerts, Semi-Truck & TPMS Axle" loading="eager" fetchpriority="high">
+              </div>
+              <div class="upf-ascii-side" style="--clip-left:50%;"></div>
+            </div>
+
+            <div class="upf-card-wrap" style="width:600px; height:300px; top:50%; transform:translate3d(1500px,-50%,0);">
+              <div class="upf-photo-side" style="--clip-right:0%;">
+                <img src="assets/flow-3.webp" alt="Driver Behavior & Cold Chain Temperature" loading="lazy" fetchpriority="auto">
+              </div>
+              <div class="upf-ascii-side" style="--clip-left:0%;"></div>
+            </div>
+
+            <div class="upf-card-wrap" style="width:600px; height:300px; top:50%; transform:translate3d(2250px,-50%,0);">
+              <div class="upf-photo-side" style="--clip-right:0%;">
+                <img src="assets/flow-4.webp" alt="1500+ GPS Hardware & IoT Connectivity" loading="lazy" fetchpriority="auto">
+              </div>
+              <div class="upf-ascii-side" style="--clip-left:0%;"></div>
+            </div>
+          </div>
+        </div>            
+        
+        <canvas id="uffizio-process-59532d48-scannerCanvas"></canvas>
+        <div class="upf-center-line"></div>
+      </div>
+
+      <!-- Ask AI Interactive Trigger Pill Banner -->
+      <div class="hero-ai-hint" onclick="window.uffizioAI.openChat()" title="Click to ask AI assistant">
+        <span class="ai-hint-sparkle">✨</span>
+        <span>Have questions about our solutions? <strong>Ask Zio AI</strong> or click here to explore</span>
+        <span class="ai-hint-arrow">&rarr;</span>
       </div>
     </section>
 
@@ -600,6 +851,208 @@
 
   <!-- Uffizio AI Chat Controller -->
   <script src="uffizio-ai-chat.js"></script>
+
+  <!-- Interactive Hero Process Flow Scanner Controller -->
+  <script>
+  (function () {
+    const WIDGET_ID = "uffizio-process-59532d48";
+
+    function initScanner() {
+      const container = document.getElementById(WIDGET_ID);
+      if (!container || container._uffizioInitialized) return;
+      container._uffizioInitialized = true;
+      container.classList.remove('uffizio-waiting');
+      container.classList.add('uffizio-active');
+
+      const stream   = document.getElementById(WIDGET_ID + '-cardLine');
+      const bgCanvas = document.getElementById(WIDGET_ID + '-particleCanvas');
+      const fgCanvas = document.getElementById(WIDGET_ID + '-scannerCanvas');
+      if (!stream || !bgCanvas || !fgCanvas) return;
+
+      bgCanvas.classList.add('upf-canvas-active');
+      fgCanvas.classList.add('upf-canvas-active');
+
+      const bgCtx = bgCanvas.getContext('2d');
+      const fgCtx = fgCanvas.getContext('2d');
+      const wrappers = Array.from(stream.querySelectorAll('.upf-card-wrap'));
+
+      let cardOffsets = [], totalW = 0;
+      let pos = 0, vel = 0.7;
+      let isDragging = false, lastX = 0;
+      let scanIntensity = 0;
+      let animationId = null;
+      let isVisible = true;
+      let cachedWidth = 0, cachedHeight = 0;
+      let isMobile = window.innerWidth <= 767;
+
+      function resize() {
+        const rect = container.getBoundingClientRect();
+        cachedWidth  = rect.width;
+        cachedHeight = rect.height;
+        if (cachedWidth === 0) return;
+
+        isMobile = window.innerWidth <= 767;
+        const targetH = isMobile ? 140 : 300;
+        const gap     = isMobile ? 40  : 150;
+
+        bgCanvas.width  = fgCanvas.width  = cachedWidth;
+        bgCanvas.height = fgCanvas.height = cachedHeight;
+
+        let offset = 0;
+        const newOffsets = [];
+
+        wrappers.forEach((wrap, i) => {
+          const photoImg = wrap.querySelector('.upf-photo-side img');
+          let aspect = 2.0;
+          if (photoImg && photoImg.naturalWidth && photoImg.naturalHeight) {
+            aspect = photoImg.naturalWidth / photoImg.naturalHeight;
+          }
+          const cardW = Math.round(targetH * aspect);
+          wrap.style.width  = cardW + 'px';
+          wrap.style.height = targetH + 'px';
+          newOffsets.push({ w: cardW, offset });
+          offset += cardW + gap;
+        });
+
+        cardOffsets = newOffsets;
+        totalW = offset;
+
+        // Center card 1 (flow-2: Fuel drain truck & TPMS from screenshot) on load
+        if (pos === 0 && cardOffsets.length > 1) {
+          const center = cachedWidth / 2;
+          pos = center - cardOffsets[1].offset;
+        }
+      }
+
+      let lastTime = 0;
+
+      function draw(ts) {
+        if (cachedWidth === 0) return;
+        const delta = lastTime ? (ts - lastTime) / 16.67 : 1;
+        lastTime = ts;
+
+        if (!isDragging) {
+          const maxV = isMobile ? 0.55 : 1.2;
+          vel = Math.abs(vel) > maxV
+            ? vel * 0.94
+            : (Math.sign(vel) || 1) * maxV;
+          pos += vel;
+        }
+
+        const center = cachedWidth / 2;
+        let anyScanning = false;
+
+        wrappers.forEach((wrap, i) => {
+          const cd = cardOffsets[i];
+          if (!cd) return;
+
+          let raw = ((pos + cd.offset) % totalW + totalW) % totalW;
+          const co = raw - center;
+          if (co > totalW / 2) raw -= totalW;
+          if (co < -totalW / 2) raw += totalW;
+
+          wrap.style.transform = `translate3d(${raw}px,-50%,0)`;
+
+          const pct = Math.max(0, Math.min(100, ((center - raw) / cd.w) * 100));
+
+          if (Math.abs(parseFloat(wrap.dataset.pct || -1) - pct) > 0.5) {
+            wrap.querySelector('.upf-photo-side').style.setProperty('--clip-right', pct + '%');
+            wrap.querySelector('.upf-ascii-side').style.setProperty('--clip-left',  pct + '%');
+            wrap.dataset.pct = pct;
+          }
+
+          if (pct > 0 && pct < 100) anyScanning = true;
+        });
+
+        scanIntensity += ((anyScanning ? 1 : 0) - scanIntensity) * 0.1;
+        renderParticles(cachedWidth, cachedHeight, scanIntensity);
+
+        if (isVisible) animationId = requestAnimationFrame(draw);
+      }
+
+      function makeOrb(r, stops) {
+        const c = document.createElement('canvas');
+        c.width = c.height = r * 2;
+        const ctx = c.getContext('2d');
+        const g = ctx.createRadialGradient(r, r, 0, r, r, r);
+        stops.forEach(s => g.addColorStop(s[0], s[1]));
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(r, r, r, 0, Math.PI * 2); ctx.fill();
+        return c;
+      }
+
+      const bgTex = makeOrb(10, [[0,'#ffffff'],[0.2,'rgba(0,119,255,0.8)'],[1,'transparent']]);
+      const fgTex = makeOrb(4,  [[0,'#ffffff'],[0.4,'rgba(0,119,255,0.9)'],[1,'transparent']]);
+
+      let bgParticles = Array.from({ length: isMobile ? 15 : 40 }, () => ({
+        x: Math.random() * (cachedWidth || 1200),
+        y: Math.random() * 450,
+        vx: Math.random() * 0.5 + 0.2,
+        r: Math.random(), a: Math.random()
+      }));
+      let fgParticles = [];
+
+      function renderParticles(w, h, intensity) {
+        bgCtx.clearRect(0, 0, w, h);
+        bgParticles.forEach(p => {
+          p.x += p.vx;
+          if (p.x > w) p.x = -10;
+          bgCtx.globalAlpha = p.a;
+          bgCtx.drawImage(bgTex, p.x, p.y, p.r * 4, p.r * 4);
+        });
+
+        fgCtx.clearRect(0, 0, w, h);
+        if (intensity > 0.1) {
+          for (let i = 0; i < (isMobile ? 1 : 3); i++) {
+            fgParticles.push({
+              x: w / 2, y: Math.random() * h,
+              vx: Math.random() * 3 + 1,
+              vy: (Math.random() - 0.5),
+              life: 1, decay: Math.random() * 0.03 + 0.02
+            });
+          }
+        }
+        for (let i = fgParticles.length - 1; i >= 0; i--) {
+          const p = fgParticles[i];
+          p.x += p.vx; p.y += p.vy; p.life -= p.decay;
+          if (p.life <= 0) { fgParticles.splice(i, 1); continue; }
+          fgCtx.globalAlpha = p.life;
+          fgCtx.drawImage(fgTex, p.x, p.y, 4, 4);
+        }
+      }
+
+      stream.addEventListener('pointerdown', e => {
+        isDragging = true; lastX = e.clientX;
+        try { stream.setPointerCapture(e.pointerId); } catch(err){}
+      }, { passive: true });
+      stream.addEventListener('pointermove', e => {
+        if (!isDragging) return;
+        vel = e.clientX - lastX; pos += vel; lastX = e.clientX;
+      }, { passive: true });
+      stream.addEventListener('pointerup', () => isDragging = false, { passive: true });
+
+      new ResizeObserver(resize).observe(container);
+
+      new IntersectionObserver(entries => {
+        isVisible = entries[0].isIntersecting;
+        if (isVisible && !animationId) {
+          animationId = requestAnimationFrame(draw);
+        } else if (!isVisible && animationId) {
+          cancelAnimationFrame(animationId); animationId = null;
+        }
+      }, { threshold: 0.01 }).observe(container);
+
+      resize();
+      animationId = requestAnimationFrame(draw);
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(initScanner, 50);
+    } else {
+      window.addEventListener('DOMContentLoaded', initScanner);
+    }
+  })();
+  </script>
 
 </body>
 </html>
