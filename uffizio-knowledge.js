@@ -15,11 +15,11 @@ const UFFIZIO_DATA = {
     devicesIntegrated: "1,500+ GPS & IoT Hardware Models",
     headquarters: "India & European Operations",
     support: "24/7 Global Technical Support & Helpdesk",
-    website: "https://uffizio.com/",
-    contactUrl: "https://uffizio.com/",
-    demoUrl: "https://uffizio.com/",
-    helpdeskUrl: "https://uffizio.com/",
-    blogUrl: "https://uffizio.com/"
+    website: "https://uffizio.com",
+    contactUrl: "https://uffizio.com/contact-us",
+    demoUrl: "https://uffizio.com/contact-us#demo",
+    helpdeskUrl: "https://helpdesk.uffizio.com/tickets",
+    blogUrl: "https://uffizio.com/category/blog"
   },
 
   categories: [
@@ -65,7 +65,7 @@ const UFFIZIO_DATA = {
         "White-label branding for telematics service providers"
       ],
       industries: ["Logistics & Cargo", "Heavy Construction", "Cold Chain Logistics", "Rental & Leasing", "Mining"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-telematics.com/fleet-management-software/",
       icon: "truck"
     },
 
@@ -82,7 +82,7 @@ const UFFIZIO_DATA = {
         "Weight sensor integration & landfill trip verification"
       ],
       industries: ["Municipal Corporations", "Private Waste Contractors", "Industrial Campuses"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-telematics.com/waste-management-system/",
       icon: "trash"
     },
 
@@ -99,7 +99,7 @@ const UFFIZIO_DATA = {
         "Emergency SOS beaconing with floor-level detection"
       ],
       industries: ["Warehouses & 3PL", "Hospitals & Healthcare", "Manufacturing Plants", "Airports"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-telematics.com/indoor-tracking-software/",
       icon: "building"
     },
 
@@ -115,7 +115,7 @@ const UFFIZIO_DATA = {
         "Multi-pet management dashboard with veterinary records"
       ],
       industries: ["Pet Owners", "Veterinary Clinics", "Pet Care Centers", "Animal Shelters"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-telematics.com/pet-tracking-software/",
       icon: "heart"
     },
 
@@ -132,7 +132,7 @@ const UFFIZIO_DATA = {
         "Total Cost of Ownership (TCO) calculator vs ICE vehicles"
       ],
       industries: ["EV Fleet Operators", "Last-Mile Delivery EVs", "Electric Bus Operators", "EV Rental Services"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-telematics.com/electric-fleet-management-software/",
       icon: "battery-charging"
     },
 
@@ -148,7 +148,7 @@ const UFFIZIO_DATA = {
         "Speed limit alerts and daily driving history replay"
       ],
       industries: ["Personal Car Owners", "Motorcycle Riders", "Small Family Fleets"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-telematics.com/personal-vehicle-tracking/",
       icon: "shield"
     },
 
@@ -164,7 +164,7 @@ const UFFIZIO_DATA = {
         "Cost-effective for spot-hired or ad-hoc logistics trucks"
       ],
       industries: ["Spot Freight Brokers", "Third-Party Logistics (3PL)", "Ad-hoc Transporters"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-telematics.com/sim-based-tracking-software/",
       icon: "smartphone"
     },
 
@@ -181,7 +181,7 @@ const UFFIZIO_DATA = {
         "Emergency SOS button for drivers and automatic emergency alerts"
       ],
       industries: ["K-12 Schools", "Colleges & Universities", "Private Student Transporters"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-commute.com/school-bus-monitoring-software",
       icon: "bus"
     },
 
@@ -198,7 +198,7 @@ const UFFIZIO_DATA = {
         "Dedicated Employee, Driver, and Transport Desk applications"
       ],
       industries: ["BPOs & Call Centers", "IT & Tech Hubs", "Financial Institutions", "24/7 Manufacturing Facilities"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-commute.com/employee-transport-software",
       icon: "users"
     },
 
@@ -214,7 +214,7 @@ const UFFIZIO_DATA = {
         "Ticketing & passenger footfall counter integration"
       ],
       industries: ["City Municipal Transport", "Inter-City Coach Lines", "Airport & University Shuttles"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-commute.com/public-transportation-software",
       icon: "navigation"
     },
 
@@ -231,7 +231,7 @@ const UFFIZIO_DATA = {
         "Offline mode with automated data sync once network resumes"
       ],
       industries: ["Field Sales & Marketing", "HVAC & Appliance Service", "Pharma Representatives", "Telecom Maintenance"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-iotech.com/field-employee-tracking-software",
       icon: "clipboard"
     },
 
@@ -247,7 +247,7 @@ const UFFIZIO_DATA = {
         "Carbon footprint calculation & ESG compliance reports"
       ],
       industries: ["Manufacturing Facilities", "Commercial Complexes & Malls", "Data Centers", "Cold Storage Plants"],
-      url: "https://uffizio.com/",
+      url: "https://uffizio-iotech.com/energy-monitoring-system",
       icon: "zap"
     }
   },

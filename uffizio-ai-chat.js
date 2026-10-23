@@ -551,8 +551,8 @@
           </div>
           <div class="cu-prod-desc">${c.tagline}</div>
           <div class="cu-prod-links">
-            <a href="${c.url || 'https://uffizio.com/'}" target="_blank" class="cu-btn-sm primary">Explore ${c.name} &rarr;</a>
-            <a href="https://uffizio.com/" target="_blank" class="cu-btn-sm outline">Book Live Demo</a>
+            <a href="${c.url}" target="_blank" class="cu-btn-sm primary">Explore ${c.name} &rarr;</a>
+            <a href="https://uffizio.com/contact-us" target="_blank" class="cu-btn-sm outline">Book Live Demo</a>
           </div>
         </div>
       `
@@ -600,7 +600,7 @@
           aiResult = generateUffizioAIResponse(query);
         } else {
           aiResult = {
-            text: `Welcome to **UffiSanse**! We provide telematics and IoT solutions including [Trakzee](https://uffizio.com/) (Fleet Management), [Smartbus](https://uffizio.com/) (School Bus Tracking), and [Taskeye](https://uffizio.com/).`,
+            text: `Welcome to **UffiSanse**! We provide telematics and IoT solutions including [Trakzee](https://uffizio-telematics.com/fleet-management-software/) (Fleet Management), [Smartbus](https://uffizio-commute.com/school-bus-monitoring-software) (School Bus Tracking), and [Taskeye](https://uffizio-iotech.com/field-employee-tracking-software).`,
             suggestions: ['Book live demo', 'Ask about Trakzee'],
             productCards: []
           };
