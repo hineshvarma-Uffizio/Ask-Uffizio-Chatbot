@@ -526,7 +526,6 @@
           <div class="cu-msg-avatar">${getUffiSanseSvg(16, 'msg_' + idSuffix)}</div>
           <div class="cu-msg-content">
             <div class="cu-msg-bubble">${this.formatMarkdown(msg.text)}</div>
-            ${this.renderProductCardsHtml(msg.productCards)}
             ${this.renderFollowupsHtml(msg.suggestions)}
           </div>
         `;
@@ -549,27 +548,8 @@
     }
 
     renderProductCardsHtml(cards) {
-      if (!cards || !cards.length) return '';
-      return cards
-        .map(
-          (c) => `
-        <div class="cu-product-card">
-          <div class="cu-product-card-top">
-            <span class="cu-prod-title">${c.name}</span>
-            <span class="cu-prod-badge">${c.category}</span>
-          </div>
-          <div class="cu-prod-desc">${c.tagline}</div>
-          <div class="cu-prod-links">
-            <a href="${c.url}" target="_blank" class="cu-btn-sm primary">Explore ${c.name} &rarr;</a>
-            <a href="https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent('Hi Uffizio, I would like to inquire about ' + c.name + '.')}" target="_blank" class="cu-btn-sm whatsapp" title="Chat on WhatsApp about ${c.name}">
-              ${ICONS.whatsapp} <span>WhatsApp</span>
-            </a>
-            <a href="https://uffizio.com/contact-us" target="_blank" class="cu-btn-sm outline">Book Demo</a>
-          </div>
-        </div>
-      `
-        )
-        .join('');
+      // Kept clean and non-intrusive: avoid repetitive CTA button boxes under every chat response
+      return '';
     }
 
     renderFollowupsHtml(suggestions) {
