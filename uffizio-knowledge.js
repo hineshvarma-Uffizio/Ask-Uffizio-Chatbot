@@ -19,7 +19,8 @@ const UFFIZIO_DATA = {
     contactUrl: "https://uffizio.com/contact-us",
     demoUrl: "https://uffizio.com/contact-us#demo",
     helpdeskUrl: "https://helpdesk.uffizio.com/tickets",
-    blogUrl: "https://uffizio.com/category/blog"
+    blogUrl: "https://uffizio.com/category/blog",
+    whatsappUrl: "https://wa.me/919876543210?text=Hi%20Uffizio,%20I%20would%20like%20to%20connect%20with%20your%20team"
   },
 
   categories: [
@@ -476,21 +477,34 @@ function generateUffizioAIResponse(query) {
     };
   }
 
-  // 13. DEMO / CONTACT / SUPPORT
+  // 13. WHATSAPP INQUIRY
+  if (q.includes("whatsapp") || q.includes("whats app") || q.includes("wp") || q.includes("chat on whatsapp")) {
+    return {
+      text: `### 💬 **Connect with Uffizio on WhatsApp**\n\nOur sales and telematics consultants are available on WhatsApp to answer your questions, demonstrate live tracking features, and discuss enterprise partnerships.\n\n👉 **[Click here to open WhatsApp Chat](${UFFIZIO_DATA.company.whatsappUrl})**\n\nOr click the green **WhatsApp icon** in the top-right bar of this chat window anytime!`,
+      suggestions: [
+        "Tell me about Trakzee Fleet Management",
+        "Book a live 1-on-1 demo",
+        "Check 1500+ supported GPS devices"
+      ],
+      productCards: [UFFIZIO_DATA.products.trakzee]
+    };
+  }
+
+  // 14. DEMO / CONTACT / SUPPORT
   if (q.includes("demo") || q.includes("contact") || q.includes("call") || q.includes("sales") || q.includes("support") || q.includes("ticket") || q.includes("meeting")) {
     return {
-      text: `### 📅 **Let's Connect & Schedule Your Live Demo**\n\nWe'd be delighted to give you a personalized walkthrough of our software suite or assist you with any questions!\n\n**Next Steps:**\n- 🗓️ **Book Live 1-on-1 Demo**: [Click here to schedule a live demo](${UFFIZIO_DATA.company.demoUrl})\n- ✉️ **Contact Sales Team**: [Submit an inquiry form](${UFFIZIO_DATA.company.contactUrl})\n- 🎫 **Helpdesk & Technical Support**: [Open a ticket on Helpdesk](${UFFIZIO_DATA.company.helpdeskUrl})\n\nOr feel free to share your email or phone number right here, and our enterprise team will reach out directly.`,
+      text: `### 📅 **Let's Connect & Schedule Your Live Demo**\n\nWe'd be delighted to give you a personalized walkthrough of our software suite or assist you with any questions!\n\n**Next Steps:**\n- 💬 **Chat on WhatsApp**: [Connect directly on WhatsApp](${UFFIZIO_DATA.company.whatsappUrl})\n- 🗓️ **Book Live 1-on-1 Demo**: [Click here to schedule a live demo](${UFFIZIO_DATA.company.demoUrl})\n- ✉️ **Contact Sales Team**: [Submit an inquiry form](${UFFIZIO_DATA.company.contactUrl})\n- 🎫 **Helpdesk & Technical Support**: [Open a ticket on Helpdesk](${UFFIZIO_DATA.company.helpdeskUrl})\n\nOr feel free to share your email or phone number right here, and our enterprise team will reach out directly.`,
       suggestions: [
+        "Chat with us on WhatsApp",
         "Schedule a demo for Trakzee",
         "Schedule a demo for Smartbus",
-        "I want to ask about pricing",
-        "Open Helpdesk Ticket"
+        "I want to ask about pricing"
       ],
       productCards: []
     };
   }
 
-  // 14. DEFAULT SMART RESPONSE
+  // 15. DEFAULT SMART RESPONSE
   return {
     text: `Thank you for asking about **${query}**!\n\nUffizio specializes in cutting-edge **Telematics & IoT Software** across four primary pillars:\n\n1. 🚛 **Telematics Suite**: [Trakzee](${UFFIZIO_DATA.products.trakzee.url}) (Fleet Management), Smart Waste, Gridzee (Indoor Tracking), Petzee, Elexee (EV), and Trakzee Mini.\n2. 🚌 **Commute Suite**: [Smartbus](${UFFIZIO_DATA.products.smartbus.url}) (School Bus Safety), Rosterz (Corporate Commute), and SmartTranzit (Public Transit).\n3. 📱 **IOTech Suite**: [Taskeye](${UFFIZIO_DATA.products.taskeye.url}) (Field Workforce Management) and Enarzee (Industrial Energy Monitoring).\n4. 🛰️ **Hardware Ecosystem**: 1500+ pre-integrated GPS devices & sensors.\n\nCould you specify which product or feature you'd like to explore in detail?`,
     suggestions: [

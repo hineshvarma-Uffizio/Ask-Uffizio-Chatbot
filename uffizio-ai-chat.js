@@ -12,6 +12,8 @@
       headerButtonText: 'Ask Zio',
       enableFloatingLauncher: true,
       enableSpeechInput: true,
+      whatsappNumber: '919876543210', // Dummy WhatsApp number (Replace with Uffizio official number e.g. 917283820406)
+      whatsappDefaultMsg: 'Hi Uffizio, I would like to inquire about your Telematics & Fleet Management software solutions.',
       geminiApiKey: '',
       geminiModel: 'gemini-1.5-flash',
       storageKey: 'uffisanse_chat_history'
@@ -108,7 +110,8 @@
     // Topbar Dropdown Action Icons (Matches ClickUp Menu)
     reset: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>`,
     share: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
-    download: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`
+    download: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+    whatsapp: `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.75c-.19 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.71 2-1.4.25-.68.25-1.27.18-1.4-.07-.12-.27-.2-.56-.35-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.56-.01"/></svg>`
   };
 
   // Catalog of ALL 13 Uffizio Products with theme colors and brand badges
@@ -303,8 +306,9 @@
             </button>
           </div>
           <div class="cu-topbar-actions">
-            <button class="cu-top-btn" id="cu-btn-download" title="Download Transcript (.txt)">${ICONS.download}</button>
-            <button class="cu-top-btn" id="cu-btn-close" title="Close">${ICONS.cancel}</button>
+            <button class="cu-top-btn cu-top-btn-whatsapp" id="cu-btn-whatsapp" title="Chat on WhatsApp" type="button">${ICONS.whatsapp}</button>
+            <button class="cu-top-btn" id="cu-btn-download" title="Download Transcript (.txt)" type="button">${ICONS.download}</button>
+            <button class="cu-top-btn" id="cu-btn-close" title="Close" type="button">${ICONS.cancel}</button>
           </div>
         </div>
 
@@ -353,6 +357,7 @@
     }
 
     bindEvents() {
+      const whatsappBtn = document.getElementById('cu-btn-whatsapp');
       const closeBtn = document.getElementById('cu-btn-close');
       const downloadBtn = document.getElementById('cu-btn-download');
       const newChatBtn = document.getElementById('cu-newchat-pill');
@@ -360,6 +365,10 @@
       const sendBtn = document.getElementById('cu-send-btn');
       const micBtn = document.getElementById('cu-mic-btn');
 
+      whatsappBtn?.addEventListener('click', () => {
+        const text = encodeURIComponent(CONFIG.whatsappDefaultMsg);
+        window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${text}`, '_blank');
+      });
       closeBtn?.addEventListener('click', () => this.closeChat());
       downloadBtn?.addEventListener('click', () => this.downloadTranscript());
       newChatBtn?.addEventListener('click', () => this.startNewConversation());
@@ -552,7 +561,10 @@
           <div class="cu-prod-desc">${c.tagline}</div>
           <div class="cu-prod-links">
             <a href="${c.url}" target="_blank" class="cu-btn-sm primary">Explore ${c.name} &rarr;</a>
-            <a href="https://uffizio.com/contact-us" target="_blank" class="cu-btn-sm outline">Book Live Demo</a>
+            <a href="https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent('Hi Uffizio, I would like to inquire about ' + c.name + '.')}" target="_blank" class="cu-btn-sm whatsapp" title="Chat on WhatsApp about ${c.name}">
+              ${ICONS.whatsapp} <span>WhatsApp</span>
+            </a>
+            <a href="https://uffizio.com/contact-us" target="_blank" class="cu-btn-sm outline">Book Demo</a>
           </div>
         </div>
       `

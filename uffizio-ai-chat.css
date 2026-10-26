@@ -423,6 +423,16 @@
   color: #0077ff;
 }
 
+.cu-top-btn.cu-top-btn-whatsapp {
+  color: #25D366;
+}
+
+.cu-top-btn.cu-top-btn-whatsapp:hover {
+  background: rgba(37, 211, 102, 0.16);
+  color: #25D366;
+  box-shadow: 0 0 12px rgba(37, 211, 102, 0.35);
+}
+
 /* =======================================================
    5. SCROLLABLE BODY (Center Hero + Messages)
 ======================================================= */
@@ -1267,6 +1277,7 @@
 .cu-prod-links {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .cu-btn-sm {
@@ -1278,7 +1289,8 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  transition: all 0.2s ease;
 }
 
 .cu-btn-sm.primary {
@@ -1287,6 +1299,23 @@
 }
 .cu-btn-sm.primary:hover {
   background: #005ce6;
+}
+
+.cu-btn-sm.whatsapp {
+  background: #25D366;
+  color: #ffffff !important;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+}
+.cu-btn-sm.whatsapp:hover {
+  background: #20ba5a;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
+  transform: translateY(-1px);
+}
+.cu-btn-sm.whatsapp svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 
 .cu-btn-sm.outline {
