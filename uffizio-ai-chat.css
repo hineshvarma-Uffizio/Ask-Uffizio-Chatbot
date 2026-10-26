@@ -1162,19 +1162,18 @@
 .cu-msg-avatar {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
-  background: #191922;
-  border: 1px solid rgba(164, 107, 255, 0.35);
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   margin-top: 2px;
-  box-shadow: 0 0 10px rgba(110, 72, 228, 0.35);
+  box-shadow: none;
 }
 
 .cu-msg-avatar .cu-uffisanse-svg {
-  animation: cu-mini-logo-float 3.5s ease-in-out infinite;
+  filter: none;
 }
 
 .cu-msg-content {
