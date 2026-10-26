@@ -313,6 +313,7 @@ function generateUffizioAIResponse(query) {
     return {
       text: `Hello! 👋 Welcome to **Uffizio**. I am **UffiSanse**, your AI Telematics & IoT Solutions Assistant.\n\nWhether you need help selecting fleet management software, tracking field employees, monitoring fuel, or checking GPS hardware compatibility, I'm here to assist you.\n\nWhat type of solution are you looking for today?`,
       suggestions: [
+        "💬 Chat on WhatsApp",
         "Tell me about Trakzee Fleet Management",
         "How does fuel theft monitoring work?",
         "Do you have software for School Buses?",
@@ -329,6 +330,7 @@ function generateUffizioAIResponse(query) {
     return {
       text: `### 🚛 **Trakzee — Advanced Fleet Management Software**\n\n**${p.tagline}**\n\n${p.overview}\n\n**Key Capabilities:**\n- 📍 **Real-time Live Tracking**: Sub-second GPS updates with playback history.\n- ⛽ **Fuel Monitoring**: Detect fuel drainage & theft instantly via digital sensors.\n- 🚦 **Driver Behavior**: Speeding, harsh braking, sharp turns, and excessive idling audits.\n- 🛠️ **Predictive Maintenance**: Automated servicing & tire pressure (TPMS) schedules.\n- 🔒 **Remote Immobilization**: Cut off engine remotely in case of theft.\n\nWould you like to test Trakzee with your fleet devices or see a live demo?`,
       suggestions: [
+        "💬 Chat on WhatsApp",
         "How does fuel theft detection work?",
         "Which GPS devices work with Trakzee?",
         "Can I white-label Trakzee for my brand?",
@@ -345,8 +347,8 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "What fuel sensors are supported?",
         "Tell me about Trakzee Fleet Management",
-        "How do I book a demo?",
-        "Talk to a sales specialist"
+        "💬 Chat on WhatsApp",
+        "How do I book a demo?"
       ],
       productCards: [UFFIZIO_DATA.products.trakzee]
     };
@@ -360,7 +362,7 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "Does Smartbus have a Parent Mobile App?",
         "How does RFID attendance work?",
-        "Tell me about Employee Transport (Rosterz)",
+        "💬 Chat on WhatsApp",
         "Schedule a demo for our school"
       ],
       productCards: [p]
@@ -375,6 +377,7 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "How does Safe Drop verification work?",
         "Tell me about Field Employee Tracking (Taskeye)",
+        "💬 Chat on WhatsApp",
         "Book a Rosterz corporate demo"
       ],
       productCards: [p]
@@ -389,6 +392,7 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "What sensors work with Smart Waste?",
         "Can municipal bodies use Smart Waste?",
+        "💬 Chat on WhatsApp",
         "Book a Smart Waste demo"
       ],
       productCards: [p]
@@ -403,6 +407,7 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "Does Taskeye work offline when network is weak?",
         "Can I assign tasks directly to field agents?",
+        "💬 Chat on WhatsApp",
         "Request a Taskeye trial"
       ],
       productCards: [p]
@@ -417,6 +422,7 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "Which EV models and protocols are supported?",
         "Compare Elexee with Trakzee",
+        "💬 Chat on WhatsApp",
         "Book an EV Fleet demo"
       ],
       productCards: [p]
@@ -431,6 +437,7 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "What is the positioning accuracy of Gridzee?",
         "Can it track hospital medical equipment?",
+        "💬 Chat on WhatsApp",
         "Schedule a technical consultation"
       ],
       productCards: [p]
@@ -444,6 +451,7 @@ function generateUffizioAIResponse(query) {
       text: `### ⚡ **Enarzee — IoT Energy Monitoring System**\n\n**${p.tagline}**\n\n${p.overview}\n\n**Key Highlights:**\n- 📊 **Sub-Metering Analytics**: Tracks consumption by line, department, machine, and floor.\n- ⚠️ **Peak Demand Alerts**: Helps factories avoid heavy utility maximum demand penalties.\n- 🛢️ **Generator Audit**: Evaluates Diesel Generator (DG) fuel consumption per unit of electricity produced.\n- 🌿 **ESG & Carbon Footprint**: Automated reporting for corporate sustainability audits.`,
       suggestions: [
         "Which energy meters are compatible?",
+        "💬 Chat on WhatsApp",
         "Schedule an Energy Audit demo"
       ],
       productCards: [p]
@@ -457,7 +465,7 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "Can I integrate a custom or new GPS device?",
         "Tell me about fuel level sensors",
-        "How do I connect my devices to Uffizio?",
+        "💬 Chat on WhatsApp",
         "Talk to our Hardware Integration team"
       ],
       productCards: []
@@ -471,6 +479,7 @@ function generateUffizioAIResponse(query) {
       suggestions: [
         "What is the cost of white-label telematics?",
         "How fast can my white-label apps be launched?",
+        "💬 Chat on WhatsApp",
         "Book a partner consultation meeting"
       ],
       productCards: []
@@ -482,6 +491,7 @@ function generateUffizioAIResponse(query) {
     return {
       text: `### 💬 **Connect with Uffizio on WhatsApp**\n\nOur sales and telematics consultants are available on WhatsApp to answer your questions, demonstrate live tracking features, and discuss enterprise partnerships.\n\n👉 **[Click here to open WhatsApp Chat](${UFFIZIO_DATA.company.whatsappUrl})**\n\nOr click the green **WhatsApp icon** in the top-right bar of this chat window anytime!`,
       suggestions: [
+        "💬 Open WhatsApp Chat",
         "Tell me about Trakzee Fleet Management",
         "Book a live 1-on-1 demo",
         "Check 1500+ supported GPS devices"
@@ -495,7 +505,7 @@ function generateUffizioAIResponse(query) {
     return {
       text: `### 📅 **Let's Connect & Schedule Your Live Demo**\n\nWe'd be delighted to give you a personalized walkthrough of our software suite or assist you with any questions!\n\n**Next Steps:**\n- 💬 **Chat on WhatsApp**: [Connect directly on WhatsApp](${UFFIZIO_DATA.company.whatsappUrl})\n- 🗓️ **Book Live 1-on-1 Demo**: [Click here to schedule a live demo](${UFFIZIO_DATA.company.demoUrl})\n- ✉️ **Contact Sales Team**: [Submit an inquiry form](${UFFIZIO_DATA.company.contactUrl})\n- 🎫 **Helpdesk & Technical Support**: [Open a ticket on Helpdesk](${UFFIZIO_DATA.company.helpdeskUrl})\n\nOr feel free to share your email or phone number right here, and our enterprise team will reach out directly.`,
       suggestions: [
-        "Chat with us on WhatsApp",
+        "💬 Chat on WhatsApp",
         "Schedule a demo for Trakzee",
         "Schedule a demo for Smartbus",
         "I want to ask about pricing"
@@ -508,10 +518,10 @@ function generateUffizioAIResponse(query) {
   return {
     text: `Thank you for asking about **${query}**!\n\nUffizio specializes in cutting-edge **Telematics & IoT Software** across four primary pillars:\n\n1. 🚛 **Telematics Suite**: [Trakzee](${UFFIZIO_DATA.products.trakzee.url}) (Fleet Management), Smart Waste, Gridzee (Indoor Tracking), Petzee, Elexee (EV), and Trakzee Mini.\n2. 🚌 **Commute Suite**: [Smartbus](${UFFIZIO_DATA.products.smartbus.url}) (School Bus Safety), Rosterz (Corporate Commute), and SmartTranzit (Public Transit).\n3. 📱 **IOTech Suite**: [Taskeye](${UFFIZIO_DATA.products.taskeye.url}) (Field Workforce Management) and Enarzee (Industrial Energy Monitoring).\n4. 🛰️ **Hardware Ecosystem**: 1500+ pre-integrated GPS devices & sensors.\n\nCould you specify which product or feature you'd like to explore in detail?`,
     suggestions: [
+      "💬 Chat on WhatsApp",
       "Tell me about Trakzee Fleet Management",
       "How does fuel theft monitoring work?",
       "Explore School Bus tracking (Smartbus)",
-      "Check 1500+ supported GPS devices",
       "Schedule a 1-on-1 live demo"
     ],
     productCards: [UFFIZIO_DATA.products.trakzee, UFFIZIO_DATA.products.smartbus]

@@ -366,8 +366,7 @@
       const micBtn = document.getElementById('cu-mic-btn');
 
       whatsappBtn?.addEventListener('click', () => {
-        const text = encodeURIComponent(CONFIG.whatsappDefaultMsg);
-        window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${text}`, '_blank');
+        this.openWhatsApp();
       });
       closeBtn?.addEventListener('click', () => this.closeChat());
       downloadBtn?.addEventListener('click', () => this.downloadTranscript());
@@ -516,26 +515,51 @@
       }
     }
 
+    openWhatsApp(customMsg) {
+      const text = encodeURIComponent(customMsg || CONFIG.whatsappDefaultMsg);
+      window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${text}`, '_blank');
+    }
+
     createMessageElement(msg, index) {
       const row = document.createElement('div');
       row.className = `cu-msg-row ${msg.role}`;
 
       if (msg.role === 'ai') {
         const idSuffix = (index !== undefined ? index : Date.now()) + '_' + Math.floor(Math.random() * 100);
-        row.innerHTML = `
-          <div class="cu-msg-avatar">${getUffiSanseSvg(16, 'msg_' + idSuffix)}</div>
-          <div class="cu-msg-content">
-            <div class="cu-msg-bubble">${this.formatMarkdown(msg.text)}</div>
-            ${this.renderFollowupsHtml(msg.suggestions)}
-          </div>
-        `;
 
-        // Bind followup chips
-        row.querySelectorAll('.cu-followup-chip').forEach((chip) => {
-          chip.addEventListener('click', () => {
-            this.sendQuery(chip.innerText);
+        if (msg.text) {
+          const ctaHtml = msg.showCTA ? this.renderProductCardsHtml(msg.productCards, msg) : '';
+          const followupsHtml = this.renderFollowupsHtml(msg.suggestions);
+
+          row.innerHTML = `
+            <div class="cu-msg-avatar">${getUffiSanseSvg(16, 'msg_' + idSuffix)}</div>
+            <div class="cu-msg-content">
+              <div class="cu-msg-bubble">${this.formatMarkdown(msg.text)}</div>
+              ${ctaHtml}
+              ${followupsHtml}
+            </div>
+          `;
+
+          // Bind followup chips
+          row.querySelectorAll('.cu-followup-chip').forEach((chip) => {
+            chip.addEventListener('click', () => {
+              const text = chip.innerText.trim();
+              if (text.toLowerCase().includes('whatsapp')) {
+                this.openWhatsApp();
+              } else {
+                this.sendQuery(text);
+              }
+            });
           });
-        });
+        } else {
+          // Placeholder during streaming
+          row.innerHTML = `
+            <div class="cu-msg-avatar">${getUffiSanseSvg(16, 'msg_' + idSuffix)}</div>
+            <div class="cu-msg-content">
+              <div class="cu-msg-bubble"></div>
+            </div>
+          `;
+        }
       } else {
         row.innerHTML = `
           <div class="cu-msg-content">
@@ -547,16 +571,58 @@
       return row;
     }
 
-    renderProductCardsHtml(cards) {
-      // Kept clean and non-intrusive: avoid repetitive CTA button boxes under every chat response
-      return '';
+    renderProductCardsHtml(cards, msg) {
+      if (!msg || !msg.showCTA) return '';
+
+      const p = cards && cards.length ? cards[0] : null;
+      const demoUrl = (typeof UFFIZIO_DATA !== 'undefined' && UFFIZIO_DATA.company && UFFIZIO_DATA.company.demoUrl) || 'https://uffizio.com/contact-us#demo';
+
+      if (p) {
+        const pMsg = `Hi Uffizio, I would like to inquire about ${p.name} (${p.category || 'Telematics'}).`;
+        const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(pMsg)}`;
+        return `
+          <div class="cu-product-card">
+            <div class="cu-product-card-top">
+              <div class="cu-prod-title">${this.escapeHtml(p.name)}</div>
+              <span class="cu-prod-badge">${this.escapeHtml(p.category || 'Telematics')}</span>
+            </div>
+            <div class="cu-prod-desc">${this.escapeHtml(p.tagline || p.overview || '')}</div>
+            <div class="cu-prod-links">
+              ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="cu-btn-sm outline">🌐 Explore ${this.escapeHtml(p.name)}</a>` : ''}
+              <a href="${whatsappUrl}" target="_blank" rel="noopener" class="cu-btn-sm whatsapp">${ICONS.whatsapp} Chat on WhatsApp</a>
+              <a href="${demoUrl}" target="_blank" rel="noopener" class="cu-btn-sm primary">🗓️ Book Demo</a>
+            </div>
+          </div>
+        `;
+      }
+
+      const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.whatsappDefaultMsg)}`;
+      return `
+        <div class="cu-product-card">
+          <div class="cu-product-card-top">
+            <div class="cu-prod-title">Connect with Uffizio Experts</div>
+            <span class="cu-prod-badge">24/7 Support</span>
+          </div>
+          <div class="cu-prod-desc">Get tailored fleet pricing, request a personalized 1-on-1 walkthrough, or chat with our telematics specialists.</div>
+          <div class="cu-prod-links">
+            <a href="${whatsappUrl}" target="_blank" rel="noopener" class="cu-btn-sm whatsapp">${ICONS.whatsapp} Chat on WhatsApp</a>
+            <a href="${demoUrl}" target="_blank" rel="noopener" class="cu-btn-sm primary">🗓️ Book Live Demo</a>
+            <a href="https://uffizio.com" target="_blank" rel="noopener" class="cu-btn-sm outline">🌐 Visit Website</a>
+          </div>
+        </div>
+      `;
     }
 
     renderFollowupsHtml(suggestions) {
       if (!suggestions || !suggestions.length) return '';
       return `
         <div class="cu-followups">
-          ${suggestions.map((s) => `<button class="cu-followup-chip">${s}</button>`).join('')}
+          ${suggestions
+            .map((s) => {
+              const isWp = s.toLowerCase().includes('whatsapp');
+              return `<button class="cu-followup-chip ${isWp ? 'whatsapp-chip' : ''}">${this.escapeHtml(s)}</button>`;
+            })
+            .join('')}
         </div>
       `;
     }
@@ -593,13 +659,13 @@
         } else {
           aiResult = {
             text: `Welcome to **UffiSanse**! We provide telematics and IoT solutions including [Trakzee](https://uffizio-telematics.com/fleet-management-software/) (Fleet Management), [Smartbus](https://uffizio-commute.com/school-bus-monitoring-software) (School Bus Tracking), and [Taskeye](https://uffizio-iotech.com/field-employee-tracking-software).`,
-            suggestions: ['Book live demo', 'Ask about Trakzee'],
+            suggestions: ['💬 Chat on WhatsApp', 'Book live demo', 'Ask about Trakzee'],
             productCards: []
           };
         }
 
         this.removeTyping();
-        this.streamAI(aiResult);
+        this.streamAI(aiResult, query);
       }, 450);
     }
 
@@ -630,13 +696,21 @@
       if (typing) typing.remove();
     }
 
-    streamAI(aiResult) {
+    streamAI(aiResult, query) {
       this.isStreaming = true;
+
+      // Smart CTA logic: First AI message gets CTA; subsequent messages only if high intent
+      const previousAiCount = this.messages.filter((m) => m.role === 'ai').length;
+      const qLower = (query || '').toLowerCase();
+      const isHighIntent = /demo|pricing|price|cost|contact|sales|talk to|speak with|human|agent|whatsapp|call|quote|quotation|buy|purchase|partner|reseller|whitelabel|trial/i.test(qLower);
+      const showCTA = (previousAiCount === 0) || isHighIntent;
+
       const msgObj = {
         role: 'ai',
         text: '',
         suggestions: aiResult.suggestions || [],
         productCards: aiResult.productCards || [],
+        showCTA: showCTA,
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
@@ -644,7 +718,7 @@
       const thread = document.getElementById('cu-messages-thread');
       const scrollable = document.getElementById('cu-chat-scrollable');
 
-      const fullText = aiResult.text;
+      const fullText = aiResult.text || '';
       const words = fullText.split(' ');
       let curWord = 0;
 
@@ -659,6 +733,43 @@
           this.isStreaming = false;
           msgObj.text = fullText;
           bubble.innerHTML = this.formatMarkdown(fullText);
+
+          // Append CTA and Follow-up suggestions once streaming completes
+          const contentDiv = rowElem.querySelector('.cu-msg-content');
+          if (contentDiv) {
+            if (msgObj.showCTA) {
+              const ctaHtml = this.renderProductCardsHtml(msgObj.productCards, msgObj);
+              if (ctaHtml) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = ctaHtml;
+                const ctaElem = tempDiv.firstElementChild;
+                if (ctaElem) contentDiv.appendChild(ctaElem);
+              }
+            }
+
+            if (msgObj.suggestions && msgObj.suggestions.length) {
+              const followupsHtml = this.renderFollowupsHtml(msgObj.suggestions);
+              if (followupsHtml) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = followupsHtml;
+                const followupsElem = tempDiv.firstElementChild;
+                if (followupsElem) {
+                  contentDiv.appendChild(followupsElem);
+                  followupsElem.querySelectorAll('.cu-followup-chip').forEach((chip) => {
+                    chip.addEventListener('click', () => {
+                      const text = chip.innerText.trim();
+                      if (text.toLowerCase().includes('whatsapp')) {
+                        this.openWhatsApp();
+                      } else {
+                        this.sendQuery(text);
+                      }
+                    });
+                  });
+                }
+              }
+            }
+          }
+
           if (scrollable) scrollable.scrollTop = scrollable.scrollHeight;
           this.saveHistory();
         } else {
@@ -685,11 +796,11 @@
         const data = await res.json();
         const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
         if (text) {
-          return { text, suggestions: ['Book a live demo', 'Ask about fuel monitoring'], productCards: [] };
+          return { text, suggestions: ['💬 Chat on WhatsApp', 'Book a live demo', 'Ask about fuel monitoring'], productCards: [] };
         }
       } catch (e) {}
 
-      return typeof generateUffizioAIResponse === 'function' ? generateUffizioAIResponse(query) : { text: 'How can I help?', suggestions: [], productCards: [] };
+      return typeof generateUffizioAIResponse === 'function' ? generateUffizioAIResponse(query) : { text: 'How can I help?', suggestions: ['💬 Chat on WhatsApp', 'Book a live demo'], productCards: [] };
     }
 
     formatMarkdown(text) {
