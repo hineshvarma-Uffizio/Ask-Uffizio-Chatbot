@@ -1907,71 +1907,154 @@
 
 .uffizio-ai-window.theme-light .cu-textarea::placeholder,
 [data-theme="light"] .cu-textarea::placeholder {
-  color: #94a3b8;
+  color: #64748b;
 }
 
+/* Input Top Strip Context in Light Mode */
 .uffizio-ai-window.theme-light .cu-input-top-strip,
-[data-theme="light"] .cu-input-top-strip {
-  background: #f1f5f9;
-  border-bottom: 1px solid #e2e8f0;
+[data-theme="light"] .cu-input-top-strip,
+.uffizio-theme-light .cu-input-top-strip {
+  background: #f1f5f9 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
 }
 
-.uffizio-ai-window.theme-light .cu-strip-name,
-[data-theme="light"] .cu-strip-name {
-  color: #1e293b;
+.uffizio-ai-window.theme-light .cu-strip-prod-label,
+[data-theme="light"] .cu-strip-prod-label,
+.uffizio-theme-light .cu-strip-prod-label {
+  color: #475569 !important;
+  font-weight: 600 !important;
 }
 
-.uffizio-ai-window.theme-light .cu-strip-clear,
-[data-theme="light"] .cu-strip-clear {
-  color: #64748b;
+.uffizio-ai-window.theme-light .cu-strip-prod-name,
+[data-theme="light"] .cu-strip-prod-name,
+.uffizio-theme-light .cu-strip-prod-name {
+  color: #0f172a !important;
+  font-weight: 700 !important;
 }
 
-.uffizio-ai-window.theme-light .cu-strip-clear:hover,
-[data-theme="light"] .cu-strip-clear:hover {
-  background: #e2e8f0;
-  color: #0f172a;
+.uffizio-ai-window.theme-light .cu-strip-prod-status,
+[data-theme="light"] .cu-strip-prod-status,
+.uffizio-theme-light .cu-strip-prod-status {
+  background: #e2e8f0 !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  opacity: 1 !important;
 }
 
+.uffizio-ai-window.theme-light .cu-strip-clear-btn,
+[data-theme="light"] .cu-strip-clear-btn,
+.uffizio-theme-light .cu-strip-clear-btn {
+  color: #64748b !important;
+}
+
+.uffizio-ai-window.theme-light .cu-strip-clear-btn:hover,
+[data-theme="light"] .cu-strip-clear-btn:hover,
+.uffizio-theme-light .cu-strip-clear-btn:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Action Controls (Mic & Send Button) in Light Mode */
 .uffizio-ai-window.theme-light .cu-mic-btn,
-[data-theme="light"] .cu-mic-btn {
-  color: #64748b;
+[data-theme="light"] .cu-mic-btn,
+.uffizio-theme-light .cu-mic-btn {
+  color: #475569 !important;
 }
 
 .uffizio-ai-window.theme-light .cu-mic-btn:hover,
-[data-theme="light"] .cu-mic-btn:hover {
-  background: #e2e8f0;
-  color: #0f172a;
+[data-theme="light"] .cu-mic-btn:hover,
+.uffizio-theme-light .cu-mic-btn:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
 }
 
 .uffizio-ai-window.theme-light .cu-send-action-btn:disabled,
-[data-theme="light"] .cu-send-action-btn:disabled {
-  background: #e2e8f0;
-  color: #94a3b8;
+[data-theme="light"] .cu-send-action-btn:disabled,
+.uffizio-theme-light .cu-send-action-btn:disabled {
+  background: #e2e8f0 !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #64748b !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  cursor: not-allowed !important;
+}
+
+.uffizio-ai-window.theme-light .cu-send-action-btn:disabled svg,
+[data-theme="light"] .cu-send-action-btn:disabled svg,
+.uffizio-theme-light .cu-send-action-btn:disabled svg {
+  stroke: #64748b !important;
+  color: #64748b !important;
+  opacity: 0.9 !important;
+}
+
+.uffizio-ai-window.theme-light .cu-send-action-btn:not(:disabled),
+[data-theme="light"] .cu-send-action-btn:not(:disabled),
+.uffizio-theme-light .cu-send-action-btn:not(:disabled) {
+  background: linear-gradient(135deg, #0077ff 0%, #005ce6 100%) !important;
+  border: 1px solid #005ce6 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: 0 3px 12px rgba(0, 119, 255, 0.45) !important;
+  filter: none !important;
+}
+
+.uffizio-ai-window.theme-light .cu-send-action-btn:not(:disabled) svg,
+[data-theme="light"] .cu-send-action-btn:not(:disabled) svg,
+.uffizio-theme-light .cu-send-action-btn:not(:disabled) svg {
+  stroke: #ffffff !important;
+  color: #ffffff !important;
 }
 
 /* Chat Messages in Light Mode */
+/* 1. User Bubble: Crisp Electric Royal Blue with Pure White Text */
+.uffizio-ai-window.theme-light .cu-msg-row.user .cu-msg-bubble,
+[data-theme="light"] .cu-msg-row.user .cu-msg-bubble,
+.uffizio-theme-light .cu-msg-row.user .cu-msg-bubble {
+  background: linear-gradient(135deg, #0077ff 0%, #005ce6 100%) !important;
+  border: 1px solid #005ce6 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 119, 255, 0.28) !important;
+  font-weight: 500 !important;
+}
+
+.uffizio-ai-window.theme-light .cu-msg-row.user .cu-msg-bubble *,
+[data-theme="light"] .cu-msg-row.user .cu-msg-bubble *,
+.uffizio-theme-light .cu-msg-row.user .cu-msg-bubble * {
+  color: #ffffff !important;
+}
+
+/* 2. AI Bubble: Clean Slate with High Contrast Text */
 .uffizio-ai-window.theme-light .cu-msg-row.ai .cu-msg-bubble,
-[data-theme="light"] .cu-msg-row.ai .cu-msg-bubble {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  color: #1e293b;
+[data-theme="light"] .cu-msg-row.ai .cu-msg-bubble,
+.uffizio-theme-light .cu-msg-row.ai .cu-msg-bubble {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
 }
 
 .uffizio-ai-window.theme-light .cu-msg-bubble h3,
 .uffizio-ai-window.theme-light .cu-msg-bubble strong,
 [data-theme="light"] .cu-msg-bubble h3,
-[data-theme="light"] .cu-msg-bubble strong {
-  color: #0f172a;
+[data-theme="light"] .cu-msg-bubble strong,
+.uffizio-theme-light .cu-msg-bubble h3,
+.uffizio-theme-light .cu-msg-bubble strong {
+  color: #0f172a !important;
 }
 
 .uffizio-ai-window.theme-light .cu-msg-bubble a,
-[data-theme="light"] .cu-msg-bubble a {
-  color: #0066ee;
+[data-theme="light"] .cu-msg-bubble a,
+.uffizio-theme-light .cu-msg-bubble a {
+  color: #0066ee !important;
+  text-decoration: underline !important;
 }
 
 .uffizio-ai-window.theme-light .cu-msg-bubble a:hover,
-[data-theme="light"] .cu-msg-bubble a:hover {
-  color: #0052cc;
+[data-theme="light"] .cu-msg-bubble a:hover,
+.uffizio-theme-light .cu-msg-bubble a:hover {
+  color: #0052cc !important;
 }
 
 /* Product Card in Light Mode */
@@ -1996,7 +2079,7 @@
 
 .uffizio-ai-window.theme-light .cu-prod-desc,
 [data-theme="light"] .cu-prod-desc {
-  color: #475569;
+  color: #334155 !important;
 }
 
 .uffizio-ai-window.theme-light .cu-btn-sm.outline,
