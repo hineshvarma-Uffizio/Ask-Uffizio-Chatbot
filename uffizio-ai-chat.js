@@ -827,7 +827,10 @@
       if (win) win.classList.add('open');
       if (overlay) overlay.classList.add('open');
       document.body.classList.add('uffizio-ai-sidebar-open');
-      setTimeout(() => document.getElementById('cu-textarea')?.focus(), 250);
+      document.documentElement.classList.add('uffizio-ai-open');
+      if (window.innerWidth > 768) {
+        setTimeout(() => document.getElementById('cu-textarea')?.focus(), 250);
+      }
     }
 
     closeChat() {
@@ -838,6 +841,7 @@
       if (win) win.classList.remove('open');
       if (overlay) overlay.classList.remove('open');
       document.body.classList.remove('uffizio-ai-sidebar-open');
+      document.documentElement.classList.remove('uffizio-ai-open');
     }
 
     toggleChat() {

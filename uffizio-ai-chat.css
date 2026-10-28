@@ -1411,16 +1411,208 @@
 }
 
 /* =======================================================
-   11. RESPONSIVE DESIGN
+   11. RESPONSIVE DESIGN & MOBILE OPTIMIZATION
 ======================================================= */
-@media (max-width: 640px) {
+@media (max-width: 900px) {
+  /* 1. Prevent background page scrolling & shifting when chat is open */
+  body.uffizio-ai-sidebar-open {
+    padding-right: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: none !important;
+  }
+  html.uffizio-ai-open {
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* 2. Fullscreen App-style Modal on Mobile & Tablet */
   .uffizio-ai-window {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    max-width: 100vw;
-    border-radius: 0;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #141418 !important;
+    z-index: 9999999 !important;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  }
+
+  .uffizio-ai-window.open {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: all !important;
+  }
+
+  /* 3. Mobile Backdrop Overlay */
+  .uffizio-ai-modal-overlay.open {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 999999 !important;
+  }
+
+  /* 4. Topbar Layout */
+  .cu-topbar {
+    padding: max(10px, env(safe-area-inset-top, 10px)) 14px 10px;
+    min-height: 54px;
+    background: #141418;
+  }
+
+  .cu-newchat-pill {
+    padding: 6px 14px;
+    font-size: 12.5px;
+  }
+
+  .cu-topbar-actions {
+    gap: 6px;
+  }
+
+  .cu-top-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* 5. Scrollable Messages Area */
+  .cu-chat-scrollable {
+    padding: 14px 14px 18px;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  /* 6. Center Hero on Mobile */
+  .cu-hero-center {
+    padding: 8px 0 16px;
+    margin: auto 0;
+  }
+
+  .cu-flower-icon-wrap {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+  }
+
+  .cu-hero-question {
+    font-size: 18px;
+    line-height: 1.35;
+    padding: 0 12px;
+  }
+
+  .cu-products-auto-scroll-section {
+    max-width: 100%;
+    margin-top: 14px;
+    overflow: hidden;
+  }
+
+  .cu-prod-pill {
+    padding: 4px 10px 4px 5px;
+    font-size: 11.5px;
+    gap: 6px;
+  }
+
+  .cu-prod-badge-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* 7. Chat Message Bubbles on Mobile */
+  .cu-messages-thread {
+    gap: 12px;
+  }
+
+  .cu-msg-avatar {
+    width: 24px;
+    height: 24px;
+    margin-top: 2px;
+  }
+
+  .cu-msg-content {
+    max-width: calc(100% - 32px);
+  }
+
+  .cu-msg-bubble {
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding: 10px 13px;
+    border-radius: 14px;
+  }
+
+  .cu-product-card {
+    padding: 12px 13px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+
+  .cu-prod-title {
+    font-size: 13px;
+  }
+
+  .cu-prod-desc {
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
+  .cu-prod-links {
+    gap: 6px;
+  }
+
+  .cu-btn-sm {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .cu-followup-chip {
+    padding: 4.5px 10px;
+    font-size: 11.5px;
+  }
+
+  /* 8. Input Container & Textarea on Mobile */
+  .cu-chat-input-container {
+    padding: 0 12px max(12px, env(safe-area-inset-bottom, 12px));
+    background: #141418;
+  }
+
+  .cu-input-box {
+    border-radius: 14px;
+  }
+
+  .cu-textarea {
+    font-size: 16px !important; /* CRITICAL: Prevents iOS auto-zoom on input focus */
+    padding: 10px 12px;
+    min-height: 42px;
+  }
+
+  .cu-input-bottom-bar {
+    padding: 4px 10px 8px;
+  }
+
+  .cu-mic-btn,
+  .cu-send-action-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* 9. Floating Launcher on Mobile */
+  .uffizio-ai-launcher {
+    bottom: max(16px, env(safe-area-inset-bottom, 16px));
+    right: 16px;
+    width: 52px;
+    height: 52px;
   }
 }
