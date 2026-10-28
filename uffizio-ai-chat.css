@@ -1616,3 +1616,519 @@
     height: 52px;
   }
 }
+
+
+/* =======================================================
+   13. UFFIZIO OFFICIAL LIGHT THEME STYLES
+   Pure White (#ffffff), Clean Slate (#f8fafc, #f1f5f9),
+   Crisp Light Borders (#e2e8f0, #cbd5e1),
+   Electric Brand Blue (#0077ff, #0066ee),
+   Deep High-Contrast Navy/Slate Text (#0f172a, #334155, #64748b)
+======================================================= */
+
+[data-theme="light"],
+.uffizio-theme-light,
+.uffizio-ai-window.theme-light {
+  --cu-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cu-bg-main: #ffffff;
+  --cu-bg-panel: #ffffff;
+  --cu-bg-card: #f8fafc;
+  --cu-bg-input: #f8fafc;
+  --cu-bg-hover: #f1f5f9;
+  --cu-border-subtle: #e2e8f0;
+  --cu-border-light: #cbd5e1;
+  --cu-border-glow: rgba(0, 119, 255, 0.35);
+  --cu-theme-primary: #0077ff;
+  --cu-theme-glow: rgba(0, 119, 255, 0.2);
+  
+  --cu-text-main: #0f172a;
+  --cu-text-muted: #475569;
+  --cu-text-dim: #64748b;
+  
+  --cu-shadow-panel: 0 20px 60px rgba(15, 23, 42, 0.16), 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+/* Modal Overlay in Light Mode */
+[data-theme="light"] .uffizio-ai-modal-overlay,
+.uffizio-theme-light .uffizio-ai-modal-overlay {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Chat Window Frame in Light Mode */
+.uffizio-ai-window.theme-light,
+[data-theme="light"] .uffizio-ai-window,
+.uffizio-theme-light .uffizio-ai-window {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.16), 0 4px 16px rgba(0, 119, 255, 0.08);
+}
+
+/* Topbar in Light Mode */
+.uffizio-ai-window.theme-light .cu-topbar,
+[data-theme="light"] .cu-topbar {
+  border-bottom: 1px solid #f1f5f9;
+  background: #ffffff;
+}
+
+.uffizio-ai-window.theme-light .cu-newchat-pill,
+[data-theme="light"] .cu-newchat-pill {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.uffizio-ai-window.theme-light .cu-newchat-pill:hover,
+[data-theme="light"] .cu-newchat-pill:hover {
+  background: #e2e8f0;
+  border-color: #0077ff;
+  color: #0f172a;
+}
+
+.uffizio-ai-window.theme-light .cu-newchat-pill svg,
+[data-theme="light"] .cu-newchat-pill svg {
+  color: #64748b;
+}
+
+.uffizio-ai-window.theme-light .cu-top-btn,
+[data-theme="light"] .cu-top-btn {
+  color: #64748b;
+}
+
+.uffizio-ai-window.theme-light .cu-top-btn:hover,
+[data-theme="light"] .cu-top-btn:hover {
+  background: #f1f5f9;
+  color: #0077ff;
+}
+
+.uffizio-ai-window.theme-light .cu-top-btn-theme,
+[data-theme="light"] .cu-top-btn-theme {
+  color: #0284c7;
+}
+
+.uffizio-ai-window.theme-light .cu-top-btn-theme:hover,
+[data-theme="light"] .cu-top-btn-theme:hover {
+  background: rgba(2, 132, 199, 0.12);
+  color: #0369a1;
+}
+
+.uffizio-ai-window.theme-light .cu-top-btn-whatsapp,
+[data-theme="light"] .cu-top-btn-whatsapp {
+  color: #16a34a;
+}
+
+.uffizio-ai-window.theme-light .cu-top-btn-whatsapp:hover,
+[data-theme="light"] .cu-top-btn-whatsapp:hover {
+  background: rgba(22, 163, 74, 0.12);
+  color: #15803d;
+  box-shadow: 0 0 10px rgba(22, 163, 74, 0.25);
+}
+
+/* Scrollbar in Light Mode */
+.uffizio-ai-window.theme-light .cu-chat-scrollable::-webkit-scrollbar-thumb,
+[data-theme="light"] .cu-chat-scrollable::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+.uffizio-ai-window.theme-light .cu-chat-scrollable::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .cu-chat-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Center Hero in Light Mode */
+.uffizio-ai-window.theme-light .cu-hero-question,
+[data-theme="light"] .cu-hero-question {
+  color: #0f172a;
+}
+
+/* Glowing Music Waves & Nebula Aura in Light Mode */
+.uffizio-ai-window.theme-light .cu-wave-subbass,
+[data-theme="light"] .cu-wave-subbass {
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 119, 255, 0.22) 0deg,
+    rgba(0, 190, 221, 0.25) 75deg,
+    rgba(99, 102, 241, 0.24) 150deg,
+    rgba(236, 72, 153, 0.2) 230deg,
+    rgba(0, 119, 255, 0.22) 360deg
+  );
+  opacity: 0.65;
+}
+
+.uffizio-ai-window.theme-light .cu-wave-harmonic,
+[data-theme="light"] .cu-wave-harmonic {
+  background: radial-gradient(
+    circle,
+    rgba(0, 119, 255, 0.32) 0%,
+    rgba(0, 190, 221, 0.22) 50%,
+    transparent 100%
+  );
+  opacity: 0.7;
+}
+
+.uffizio-ai-window.theme-light .cu-wave-beat,
+[data-theme="light"] .cu-wave-beat {
+  background: conic-gradient(
+    from 180deg,
+    rgba(0, 190, 221, 0.32) 0deg,
+    rgba(0, 119, 255, 0.38) 90deg,
+    rgba(168, 85, 247, 0.32) 180deg,
+    rgba(236, 72, 153, 0.28) 270deg,
+    rgba(0, 190, 221, 0.32) 360deg
+  );
+  opacity: 0.75;
+}
+
+/* White Star Silhouette in Light Mode with High-Definition Glow & Rim */
+.uffizio-ai-window.theme-light .cu-uffisanse-svg.cu-svg-white,
+[data-theme="light"] .cu-uffisanse-svg.cu-svg-white {
+  filter: drop-shadow(0 4px 14px rgba(0, 119, 255, 0.35)) drop-shadow(0 1px 3px rgba(15, 23, 42, 0.15));
+}
+
+.uffizio-ai-window.theme-light .cu-star-rim-base,
+[data-theme="light"] .cu-star-rim-base {
+  stroke: rgba(0, 119, 255, 0.45) !important;
+  stroke-width: 0.4px;
+}
+
+.uffizio-ai-window.theme-light .cu-star-rim-trace,
+[data-theme="light"] .cu-star-rim-trace {
+  filter: drop-shadow(0 0 3px rgba(0, 119, 255, 0.8)) drop-shadow(0 0 6px rgba(0, 190, 221, 0.7));
+}
+
+/* Marquee Curtains in Light Mode */
+.uffizio-ai-window.theme-light .cu-products-auto-scroll-section::before,
+[data-theme="light"] .cu-products-auto-scroll-section::before {
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #ffffff 35%,
+    rgba(255, 255, 255, 0.88) 65%,
+    transparent 100%
+  );
+}
+
+.uffizio-ai-window.theme-light .cu-products-auto-scroll-section::after,
+[data-theme="light"] .cu-products-auto-scroll-section::after {
+  background: linear-gradient(
+    to left,
+    #ffffff 0%,
+    #ffffff 35%,
+    rgba(255, 255, 255, 0.88) 65%,
+    transparent 100%
+  );
+}
+
+/* Product Pills in Light Mode */
+.uffizio-ai-window.theme-light .cu-prod-pill,
+[data-theme="light"] .cu-prod-pill {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #334155;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.uffizio-ai-window.theme-light .cu-prod-pill:hover,
+[data-theme="light"] .cu-prod-pill:hover {
+  background: #f8fafc;
+  border-color: var(--prod-color, #0077ff);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1), 0 0 10px var(--prod-glow, rgba(0, 119, 255, 0.25));
+  color: #0f172a;
+}
+
+.uffizio-ai-window.theme-light .cu-prod-name,
+[data-theme="light"] .cu-prod-name {
+  color: #334155;
+}
+
+.uffizio-ai-window.theme-light .cu-prod-pill:hover .cu-prod-name,
+[data-theme="light"] .cu-prod-pill:hover .cu-prod-name {
+  color: #0f172a;
+}
+
+.uffizio-ai-window.theme-light .cu-prod-pill.active-selected,
+[data-theme="light"] .cu-prod-pill.active-selected {
+  background: #f0f7ff !important;
+  border-color: #0077ff !important;
+  color: #0077ff !important;
+  box-shadow: 0 0 0 1px #0077ff, 0 4px 14px rgba(0, 119, 255, 0.25) !important;
+}
+
+/* Action Filter Pills in Light Mode */
+.uffizio-ai-window.theme-light .cu-action-pill,
+[data-theme="light"] .cu-action-pill {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+.uffizio-ai-window.theme-light .cu-action-pill:hover,
+[data-theme="light"] .cu-action-pill:hover {
+  background: #f1f5f9;
+  border-color: #0077ff;
+  color: #0077ff;
+}
+
+.uffizio-ai-window.theme-light .cu-action-pill svg,
+[data-theme="light"] .cu-action-pill svg {
+  color: #64748b;
+}
+
+.uffizio-ai-window.theme-light .cu-action-pill:hover svg,
+[data-theme="light"] .cu-action-pill:hover svg {
+  color: #0077ff;
+}
+
+/* Chat Input Container in Light Mode */
+.uffizio-ai-window.theme-light .cu-chat-input-container,
+[data-theme="light"] .cu-chat-input-container {
+  background: #ffffff;
+}
+
+.uffizio-ai-window.theme-light .cu-input-box,
+[data-theme="light"] .cu-input-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.uffizio-ai-window.theme-light .cu-input-box:focus-within,
+[data-theme="light"] .cu-input-box:focus-within {
+  border-color: #0077ff;
+  box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.15), 0 4px 16px rgba(15, 23, 42, 0.06);
+  background: #ffffff;
+}
+
+.uffizio-ai-window.theme-light .cu-textarea,
+[data-theme="light"] .cu-textarea {
+  color: #0f172a;
+}
+
+.uffizio-ai-window.theme-light .cu-textarea::placeholder,
+[data-theme="light"] .cu-textarea::placeholder {
+  color: #94a3b8;
+}
+
+.uffizio-ai-window.theme-light .cu-input-top-strip,
+[data-theme="light"] .cu-input-top-strip {
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.uffizio-ai-window.theme-light .cu-strip-name,
+[data-theme="light"] .cu-strip-name {
+  color: #1e293b;
+}
+
+.uffizio-ai-window.theme-light .cu-strip-clear,
+[data-theme="light"] .cu-strip-clear {
+  color: #64748b;
+}
+
+.uffizio-ai-window.theme-light .cu-strip-clear:hover,
+[data-theme="light"] .cu-strip-clear:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.uffizio-ai-window.theme-light .cu-mic-btn,
+[data-theme="light"] .cu-mic-btn {
+  color: #64748b;
+}
+
+.uffizio-ai-window.theme-light .cu-mic-btn:hover,
+[data-theme="light"] .cu-mic-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.uffizio-ai-window.theme-light .cu-send-action-btn:disabled,
+[data-theme="light"] .cu-send-action-btn:disabled {
+  background: #e2e8f0;
+  color: #94a3b8;
+}
+
+/* Chat Messages in Light Mode */
+.uffizio-ai-window.theme-light .cu-msg-row.ai .cu-msg-bubble,
+[data-theme="light"] .cu-msg-row.ai .cu-msg-bubble {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+
+.uffizio-ai-window.theme-light .cu-msg-bubble h3,
+.uffizio-ai-window.theme-light .cu-msg-bubble strong,
+[data-theme="light"] .cu-msg-bubble h3,
+[data-theme="light"] .cu-msg-bubble strong {
+  color: #0f172a;
+}
+
+.uffizio-ai-window.theme-light .cu-msg-bubble a,
+[data-theme="light"] .cu-msg-bubble a {
+  color: #0066ee;
+}
+
+.uffizio-ai-window.theme-light .cu-msg-bubble a:hover,
+[data-theme="light"] .cu-msg-bubble a:hover {
+  color: #0052cc;
+}
+
+/* Product Card in Light Mode */
+.uffizio-ai-window.theme-light .cu-product-card,
+[data-theme="light"] .cu-product-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.uffizio-ai-window.theme-light .cu-prod-title,
+[data-theme="light"] .cu-prod-title {
+  color: #0f172a;
+}
+
+.uffizio-ai-window.theme-light .cu-prod-badge,
+[data-theme="light"] .cu-prod-badge {
+  background: rgba(0, 119, 255, 0.1);
+  color: #0066ee;
+  border-color: rgba(0, 119, 255, 0.25);
+}
+
+.uffizio-ai-window.theme-light .cu-prod-desc,
+[data-theme="light"] .cu-prod-desc {
+  color: #475569;
+}
+
+.uffizio-ai-window.theme-light .cu-btn-sm.outline,
+[data-theme="light"] .cu-btn-sm.outline {
+  background: #f8fafc;
+  color: #334155 !important;
+  border-color: #cbd5e1;
+}
+
+.uffizio-ai-window.theme-light .cu-btn-sm.outline:hover,
+[data-theme="light"] .cu-btn-sm.outline:hover {
+  background: #f1f5f9;
+  border-color: #0077ff;
+  color: #0077ff !important;
+}
+
+/* Follow-up Chips in Light Mode */
+.uffizio-ai-window.theme-light .cu-followup-chip,
+[data-theme="light"] .cu-followup-chip {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #334155;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.uffizio-ai-window.theme-light .cu-followup-chip:hover,
+[data-theme="light"] .cu-followup-chip:hover {
+  background: #f0f7ff;
+  border-color: #0077ff;
+  color: #0077ff;
+}
+
+.uffizio-ai-window.theme-light .cu-followup-chip.whatsapp-chip,
+[data-theme="light"] .cu-followup-chip.whatsapp-chip {
+  background: rgba(22, 163, 74, 0.08);
+  border-color: rgba(22, 163, 74, 0.3);
+  color: #16a34a;
+}
+
+.uffizio-ai-window.theme-light .cu-followup-chip.whatsapp-chip:hover,
+[data-theme="light"] .cu-followup-chip.whatsapp-chip:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
+
+/* Typing Dots in Light Mode */
+.uffizio-ai-window.theme-light .cu-typing,
+[data-theme="light"] .cu-typing {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.uffizio-ai-window.theme-light .cu-typing-dot,
+[data-theme="light"] .cu-typing-dot {
+  background: #94a3b8;
+}
+
+/* Toast in Light Mode */
+.uffizio-ai-window.theme-light .cu-toast-notification,
+[data-theme="light"] .cu-toast-notification {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+}
+
+/* Scroll to Bottom Button in Light Mode */
+.uffizio-ai-window.theme-light .cu-scroll-bottom-btn,
+[data-theme="light"] .cu-scroll-bottom-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+}
+
+.uffizio-ai-window.theme-light .cu-scroll-bottom-btn:hover,
+[data-theme="light"] .cu-scroll-bottom-btn:hover {
+  background: #f8fafc;
+  border-color: #0077ff;
+  color: #0077ff;
+}
+
+/* Floating Launcher in Light Mode */
+[data-theme="light"] .uffizio-ai-launcher,
+.uffizio-theme-light .uffizio-ai-launcher {
+  background: #ffffff;
+  border-color: rgba(0, 119, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 119, 255, 0.22), 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .uffizio-ai-launcher:hover,
+.uffizio-theme-light .uffizio-ai-launcher:hover {
+  box-shadow: 0 12px 32px rgba(0, 119, 255, 0.38);
+}
+
+[data-theme="light"] .cu-launcher-logo-glow,
+.uffizio-theme-light .cu-launcher-logo-glow {
+  background: radial-gradient(circle, rgba(0, 119, 255, 0.3) 0%, rgba(0, 190, 221, 0.15) 50%, transparent 70%);
+}
+
+/* Header AI Button in Light Mode */
+[data-theme="light"] .uffizio-header-ai-btn,
+.uffizio-theme-light .uffizio-header-ai-btn {
+  background: linear-gradient(135deg, rgba(0, 119, 255, 0.12) 0%, rgba(0, 85, 204, 0.14) 50%, rgba(0, 190, 221, 0.1) 100%);
+  border: 1px solid rgba(0, 119, 255, 0.35);
+  color: #0066ee !important;
+  box-shadow: 0 2px 10px rgba(0, 119, 255, 0.12);
+}
+
+[data-theme="light"] .uffizio-header-ai-btn:hover,
+.uffizio-theme-light .uffizio-header-ai-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 119, 255, 0.22) 0%, rgba(0, 85, 204, 0.24) 50%, rgba(0, 190, 221, 0.18) 100%);
+  border-color: #0077ff;
+  color: #0052cc !important;
+  box-shadow: 0 4px 18px rgba(0, 119, 255, 0.25);
+}
+
+[data-theme="light"] .uffizio-header-ai-btn .cu-star-rim-base,
+.uffizio-theme-light .uffizio-header-ai-btn .cu-star-rim-base {
+  stroke: rgba(0, 119, 255, 0.5) !important;
+}
+
+[data-theme="light"] .uffizio-header-ai-btn .cu-star-rim-spark,
+.uffizio-theme-light .uffizio-header-ai-btn .cu-star-rim-spark {
+  stroke: #0077ff !important;
+}
+
+/* Mobile adjustments in Light Mode */
+@media (max-width: 640px) {
+  .uffizio-ai-window.theme-light .cu-chat-input-container,
+  [data-theme="light"] .cu-chat-input-container {
+    background: #ffffff;
+  }
+}

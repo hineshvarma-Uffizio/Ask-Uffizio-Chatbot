@@ -735,6 +735,189 @@
       .stat-box h4 {
         font-size: 26px;
       }
+      .theme-toggle-btn {
+        width: 32px;
+        height: 32px;
+      }
+      .theme-toggle-btn svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    /* ============================================================
+       UFFIZIO OFFICIAL LIGHT THEME STYLES (WEBSITE)
+    ============================================================ */
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #e2e8f0;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+    .theme-toggle-btn:hover {
+      background: rgba(0, 119, 255, 0.2);
+      border-color: #0077ff;
+      color: #ffffff;
+      transform: scale(1.06);
+    }
+    .theme-toggle-btn svg {
+      width: 17px;
+      height: 17px;
+      display: block;
+    }
+
+    [data-theme="light"],
+    body.uffizio-theme-light {
+      --uffizio-bg-dark: #f8fafc;
+      --uffizio-bg-deep: #ffffff;
+      --uffizio-blue-primary: #0077ff;
+      --uffizio-blue-dark: #e2e8f0;
+      --uffizio-cyan-accent: #0090b8;
+      --uffizio-text-white: #0f172a;
+      --uffizio-text-muted: #64748b;
+      --uffizio-border-dark: #e2e8f0;
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+    }
+
+    [data-theme="light"] .ambient-glow,
+    body.uffizio-theme-light .ambient-glow {
+      background: radial-gradient(circle, rgba(0, 119, 255, 0.08) 0%, rgba(0, 190, 221, 0.04) 40%, transparent 70%);
+    }
+
+    [data-theme="light"] .site-header,
+    body.uffizio-theme-light .site-header {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+    }
+
+    [data-theme="light"] .site-nav a,
+    body.uffizio-theme-light .site-nav a {
+      color: #334155;
+    }
+    [data-theme="light"] .site-nav a:hover,
+    body.uffizio-theme-light .site-nav a:hover {
+      color: #0077ff;
+    }
+
+    [data-theme="light"] .site-logo-fallback,
+    body.uffizio-theme-light .site-logo-fallback {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .theme-toggle-btn,
+    body.uffizio-theme-light .theme-toggle-btn {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #0284c7;
+    }
+    [data-theme="light"] .theme-toggle-btn:hover,
+    body.uffizio-theme-light .theme-toggle-btn:hover {
+      background: #e2e8f0;
+      border-color: #0077ff;
+      color: #0369a1;
+    }
+
+    [data-theme="light"] .uffizio-line-two,
+    body.uffizio-theme-light .uffizio-line-two {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .uffizio-subtitle,
+    body.uffizio-theme-light .uffizio-subtitle {
+      color: #475569;
+    }
+
+    [data-theme="light"] .hero-ai-hint,
+    body.uffizio-theme-light .hero-ai-hint {
+      background: #ffffff;
+      border: 1px solid rgba(0, 119, 255, 0.28);
+      color: #0f172a;
+      box-shadow: 0 4px 20px rgba(0, 119, 255, 0.08);
+    }
+    [data-theme="light"] .hero-ai-hint:hover,
+    body.uffizio-theme-light .hero-ai-hint:hover {
+      border-color: #0077ff;
+      box-shadow: 0 6px 26px rgba(0, 119, 255, 0.16);
+    }
+
+    [data-theme="light"] .stats-strip,
+    body.uffizio-theme-light .stats-strip {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    [data-theme="light"] .stat-box h4,
+    body.uffizio-theme-light .stat-box h4 {
+      color: #0077ff;
+    }
+    [data-theme="light"] .stat-box p,
+    body.uffizio-theme-light .stat-box p {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .section-header h2,
+    body.uffizio-theme-light .section-header h2 {
+      color: #0f172a;
+    }
+    [data-theme="light"] .section-header p,
+    body.uffizio-theme-light .section-header p {
+      color: #475569;
+    }
+
+    [data-theme="light"] .product-card-preview,
+    body.uffizio-theme-light .product-card-preview {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+    [data-theme="light"] .product-card-preview:hover,
+    body.uffizio-theme-light .product-card-preview:hover {
+      border-color: #0077ff;
+      box-shadow: 0 8px 24px rgba(0, 119, 255, 0.12);
+    }
+
+    [data-theme="light"] .card-title,
+    body.uffizio-theme-light .card-title {
+      color: #0f172a;
+    }
+    [data-theme="light"] .card-desc,
+    body.uffizio-theme-light .card-desc {
+      color: #475569;
+    }
+    [data-theme="light"] .card-category-badge,
+    body.uffizio-theme-light .card-category-badge {
+      background: rgba(0, 119, 255, 0.1);
+      color: #0066ee;
+      border: 1px solid rgba(0, 119, 255, 0.25);
+    }
+    [data-theme="light"] .card-ask-ai-link,
+    body.uffizio-theme-light .card-ask-ai-link {
+      color: #0066ee;
+      background: rgba(0, 119, 255, 0.08);
+      border: 1px solid rgba(0, 119, 255, 0.2);
+    }
+    [data-theme="light"] .card-ask-ai-link:hover,
+    body.uffizio-theme-light .card-ask-ai-link:hover {
+      background: #0077ff;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 119, 255, 0.3);
+    }
+
+    [data-theme="light"] footer,
+    body.uffizio-theme-light footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      color: #64748b;
     }
   </style>
 </head>
@@ -771,7 +954,9 @@
       <!-- Header Actions (Where AI Chat Button is Injected) -->
       <div class="header-contact">
         <!-- The AI Chat Button is injected here by uffizio-ai-chat.js automatically! -->
-        <!-- Or placed directly in HTML as below: -->
+        <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" title="Switch Theme" aria-label="Switch Theme">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </button>
         <a href="https://uffizio.com/contact-us" class="contact-btn">Contact Us</a>
       </div>
 
