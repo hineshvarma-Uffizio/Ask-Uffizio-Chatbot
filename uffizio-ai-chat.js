@@ -282,14 +282,6 @@
         win.classList.toggle('theme-light', isLight);
       }
       
-      // Update Chat Topbar theme toggle button
-      const topbarThemeBtn = document.getElementById('cu-btn-theme');
-      if (topbarThemeBtn) {
-        topbarThemeBtn.innerHTML = isLight ? ICONS.moon : ICONS.sun;
-        topbarThemeBtn.setAttribute('title', isLight ? 'Switch to Dark mode' : 'Switch to Light mode');
-        topbarThemeBtn.setAttribute('aria-label', isLight ? 'Switch to Dark mode' : 'Switch to Light mode');
-      }
-
       // Update Site Header theme toggle button if exists
       const siteThemeBtn = document.getElementById('theme-toggle-btn');
       if (siteThemeBtn) {
@@ -373,7 +365,7 @@
       win.id = 'uffizio-ai-window';
       win.className = `uffizio-ai-window ${this.currentTheme === 'light' ? 'theme-light' : ''}`;
       win.innerHTML = `
-        <!-- TOPBAR: New Chat Button and Right Icons (Theme, WhatsApp, Download & Cancel) -->
+        <!-- TOPBAR: New Chat Button and Right Icons (Download & Cancel) -->
         <div class="cu-topbar">
           <div class="cu-newchat-wrapper">
             <button class="cu-newchat-pill" id="cu-newchat-pill" type="button" title="Start New Conversation">
@@ -381,8 +373,6 @@
             </button>
           </div>
           <div class="cu-topbar-actions">
-            <button class="cu-top-btn cu-top-btn-theme" id="cu-btn-theme" title="${this.currentTheme === 'light' ? 'Switch to Dark mode' : 'Switch to Light mode'}" type="button">${this.currentTheme === 'light' ? ICONS.moon : ICONS.sun}</button>
-            <button class="cu-top-btn cu-top-btn-whatsapp" id="cu-btn-whatsapp" title="Chat on WhatsApp" type="button">${ICONS.whatsapp}</button>
             <button class="cu-top-btn" id="cu-btn-download" title="Download Transcript (.txt)" type="button">${ICONS.download}</button>
             <button class="cu-top-btn" id="cu-btn-close" title="Close" type="button">${ICONS.cancel}</button>
           </div>
@@ -434,8 +424,6 @@
     }
 
     bindEvents() {
-      const themeBtn = document.getElementById('cu-btn-theme');
-      const whatsappBtn = document.getElementById('cu-btn-whatsapp');
       const closeBtn = document.getElementById('cu-btn-close');
       const downloadBtn = document.getElementById('cu-btn-download');
       const newChatBtn = document.getElementById('cu-newchat-pill');
@@ -443,17 +431,12 @@
       const sendBtn = document.getElementById('cu-send-btn');
       const micBtn = document.getElementById('cu-mic-btn');
 
-      themeBtn?.addEventListener('click', () => this.toggleTheme());
-
       const siteThemeBtn = document.getElementById('theme-toggle-btn');
       siteThemeBtn?.addEventListener('click', (e) => {
         e.preventDefault();
         this.toggleTheme();
       });
 
-      whatsappBtn?.addEventListener('click', () => {
-        this.openWhatsApp();
-      });
       closeBtn?.addEventListener('click', () => this.closeChat());
       downloadBtn?.addEventListener('click', () => this.downloadTranscript());
       newChatBtn?.addEventListener('click', () => this.startNewConversation());
