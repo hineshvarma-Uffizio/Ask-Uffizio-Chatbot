@@ -441,6 +441,19 @@
       downloadBtn?.addEventListener('click', () => this.downloadTranscript());
       newChatBtn?.addEventListener('click', () => this.startNewConversation());
 
+      // Global delegated trigger for Megamenu, buttons, custom links (#ask-zio, .open-ai-chat, [data-open-ai-chat])
+      document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-open-ai-chat], .open-ai-chat, .ask-zio-trigger, a[href="#ask-zio"], a[href="#ask-ai"]');
+        if (trigger) {
+          e.preventDefault();
+          const query = trigger.getAttribute('data-ai-query');
+          const product = trigger.getAttribute('data-ai-product');
+          this.openChat();
+          if (product) this.selectProduct(product);
+          if (query) this.sendQuery(query);
+        }
+      });
+
       // Bind input strip close / clear buttons
       this.bindStripEvents();
 
